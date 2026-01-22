@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo.png" width="160" alt="UniDocVerse Logo">
+  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo.jpg" width="160" alt="UniDocVerse Logo">
 </p>
 
 
