@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/<your-username>/unidocverse/main/logo.png" width="160" alt="UniDocVerse Logo">
+  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo.png" width="160" alt="UniDocVerse Logo">
 </p>
 
 <h1 align="center">UniDocVerse</h1>
@@ -206,6 +206,28 @@ TAR, GZ (.tar, .gz, .tgz)
 JSONL (.jsonl)  
 XML (.xml)  
 YAML (.yaml, .yml)
+
+---
+## 🖥️ Product Screenshots
+
+Below are placeholders for UniDocVerse UI screenshots.  
+Replace each placeholder with your actual PNG/SVG files once ready.
+
+<p align="center">
+  <img src="docs/screenshot-dashboard.png" width="720" alt="Dashboard Screenshot Placeholder">
+</p>
+
+<p align="center">
+  <img src="docs/screenshot-insights.png" width="720" alt="Insights Panel Screenshot Placeholder">
+</p>
+
+<p align="center">
+  <img src="docs/screenshot-search.png" width="720" alt="Search Results Screenshot Placeholder">
+</p>
+
+<p align="center">
+  <img src="docs/screenshot-analytics.png" width="720" alt="Analytics Dashboard Screenshot Placeholder">
+</p>
 
 ---
 
