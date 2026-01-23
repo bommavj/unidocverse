@@ -46,10 +46,11 @@ flowchart LR
     Workflow --> Analytics
     Workflow --> PG
     API --> PG
+```
 
+## Agentic Workflow Pipeline
 
-Agentic Workflow Pipeline
-
+```mermaid
 flowchart TD
 
     INGEST[Ingest Node] --> PARSE[Parse Node]
@@ -62,8 +63,9 @@ flowchart TD
     INSIGHT --> METRICS[Calculate Metrics Node]
     METRICS --> ENTITY[Entity Linking Node]
     ENTITY --> FINALIZE[Finalize Node]
+```
 
-
+```mermaid
 flowchart TB
 
     %% ============================
