@@ -215,19 +215,95 @@ Below are placeholders for UniDocVerse UI screenshots.
 Replace each placeholder with your actual PNG/SVG files once ready.
 
 <p align="center">
-  <img src="docs/screenshot-dashboard.png" width="720" alt="Dashboard Screenshot Placeholder">
+  <img src="docs/images/main-dashboard.png" width="720" alt="Dashboard">
 </p>
 
 <p align="center">
-  <img src="docs/screenshot-insights.png" width="720" alt="Insights Panel Screenshot Placeholder">
+  <img src="docs/images/upload.png" width="720" alt="upload">
 </p>
 
 <p align="center">
-  <img src="docs/screenshot-search.png" width="720" alt="Search Results Screenshot Placeholder">
+  <img src="docs/images/batch-upload.png" width="720" alt="batch upload">
 </p>
 
 <p align="center">
-  <img src="docs/screenshot-analytics.png" width="720" alt="Analytics Dashboard Screenshot Placeholder">
+  <img src="docs/images/documents.png" width="720" alt="documents">
+</p>
+
+<p align="center">
+  <img src="docs/images/semantic-search.png" width="720" alt="Semantic Search Results">
+</p>
+
+<p align="center">
+  <img src="docs/images/semantic-search2.png" width="720" alt="Semantic Search Results>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-cards.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-preview.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-preview2.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-analytics.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/advance-analytics.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/advance-analytics-v1.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/try-v2.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-details.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-summary.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-insights.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-keypoints.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-classification.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-similar.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-similar2.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/doc-askAI.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/ai-conversation.png" width="720" alt="All Documents>
+</p>
+
+<p align="center">
+  <img src="docs/images/ai-conversation.png" width="720" alt="All Documents>
 </p>
 
 ---
