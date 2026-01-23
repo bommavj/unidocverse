@@ -46,7 +46,7 @@ flowchart LR
     Workflow --> Analytics
     Workflow --> PG
     API --> PG
-```
+
 
 Agentic Workflow Pipeline
 
@@ -144,4 +144,4 @@ flowchart TB
     ANALYTICS --> UI
     PG --> UI
     VEC --> UI
-    
+```
