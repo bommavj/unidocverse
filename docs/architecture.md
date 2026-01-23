@@ -65,6 +65,8 @@ flowchart TD
     ENTITY --> FINALIZE[Finalize Node]
 ```
 
+## Low Level Architecture
+
 ```mermaid
 flowchart TB
 
