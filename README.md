@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo.jpg" width="160" alt="UniDocVerse Logo">
+  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo-final.png" width="160" alt="UniDocVerse Logo">
 </p>
 
 
@@ -211,99 +211,136 @@ YAML (.yaml, .yml)
 ---
 ## 🖥️ Product Screenshots
 
-Below are placeholders for UniDocVerse UI screenshots.  
-Replace each placeholder with your actual PNG/SVG files once ready.
-
+<b>Main Dashboard</b>
+<p>A unified overview of all uploaded documents, recent activity, analytics summaries, and quick‑access actions. Designed for fast navigation and enterprise clarity.</p>
 <p align="center">
   <img src="docs/images/main-dashboard.png" width="720" alt="Dashboard">
 </p>
 
+<b>Upload Document</b>
+<p>The primary upload interface where users can drag‑and‑drop or browse files. Supports PDFs, images, scanned documents, and multi‑page uploads.</p>
 <p align="center">
   <img src="docs/images/upload.png" width="720" alt="upload">
 </p>
 
+<b>Batch Upload</b>
+<p>Bulk ingestion workflow allowing users to upload multiple documents at once. Ideal for law firms, finance teams, and enterprise back‑office operations.</p>
 <p align="center">
   <img src="docs/images/batch-upload.png" width="720" alt="batch upload">
 </p>
 
+<b>Documents List</b>
+<p>A searchable, filterable list of all processed documents. Includes metadata, timestamps, document type classification, and quick actions.</p>
 <p align="center">
-  <img src="docs/images/documents.png" width="720" alt="documents">
+  <img src="docs/images/doc-cards.png" width="720" alt="documents">
 </p>
 
+<b>Semantic Search Results (View 1)</b>
+<p>AI‑powered semantic search results showing documents ranked by meaning, not keywords. Enables natural‑language queries across all content.</p>
 <p align="center">
   <img src="docs/images/semantic-search.png" width="720" alt="Semantic Search Results">
 </p>
 
+<b>Semantic Search Results (View 2)</b>
+<p>An alternate semantic search layout highlighting deeper context matches, similarity scores, and document previews.</p>
 <p align="center">
-  <img src="docs/images/semantic-search2.png" width="720" alt="Semantic Search Results>
+  <img src="docs/images/semantic-search2.png" width="720" alt="Semantic Search Results">
 </p>
 
+<b>Document Preview (View 1)</b>
+<p>Full document viewer with page navigation, zoom, and side‑panel metadata. Supports scanned PDFs, OCR text, and structured extraction.</p>
 <p align="center">
-  <img src="docs/images/doc-cards.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-preview.png" width="720" alt="Document Preview">
 </p>
 
+<b>Full document preview</b>
+<p>*only pdf viewer , other formats can able to download</p>
 <p align="center">
-  <img src="docs/images/doc-preview.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-preview-2.png" width="720" alt="Document Preview">
 </p>
 
+<b>Document Analytics</b>
 <p align="center">
-  <img src="docs/images/doc-preview2.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-analytics.png" width="720" alt="Document Analytics">
 </p>
 
+<b>Document Analytics</b>
+<p>High‑level analytics dashboard showing metrics, trends, aggregations, and insights extracted from the document.</p>
 <p align="center">
-  <img src="docs/images/doc-analytics.png" width="720" alt="All Documents>
+  <img src="docs/images/advance-analytics.png" width="720" alt="Document Analytics">
 </p>
 
+<b>Document Analytics</b>
+<p>High‑level analytics dashboard showing metrics, trends, aggregations, and insights extracted from the document.</p>
 <p align="center">
-  <img src="docs/images/advance-analytics.png" width="720" alt="All Documents>
+  <img src="docs/images/advance-analytics-v1.png" width="720" alt="Document Analytics">
 </p>
 
+<b>Document Analytics V2</b>
+<p>Try V2 if the analytics didnt work. Additional option to check the analytics. </p>
+<b>If both didnt work (i.e. Analytics are not present)</b>
 <p align="center">
-  <img src="docs/images/advance-analytics-v1.png" width="720" alt="All Documents>
+  <img src="docs/images/try-v2.png" width="720" alt="Advance Analytics V2">
 </p>
 
+<b>Document Details</b>
+<p>A structured breakdown of document metadata, extracted fields, classification, and processing history.</p>
 <p align="center">
-  <img src="docs/images/try-v2.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-details.png" width="720" alt="Document Details">
 </p>
 
+<b>Document Summary</b>
+<p>AI‑generated summary capturing the key points, purpose, and essential information from the document.</p>
 <p align="center">
-  <img src="docs/images/doc-details.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-summary.png" width="720" alt="Document Summary">
 </p>
 
+<b>Document Insights</b>
+<p>Actionable insights extracted by the analyzer — anomalies, flags, recommendations, and domain‑specific intelligence.</p>
 <p align="center">
-  <img src="docs/images/doc-summary.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-insights.png" width="720" alt="Document Insights">
 </p>
 
+<b>Document Keypoints</b>
+<p>Bullet‑point extraction of the most important facts, values, and statements within the document.</p>
 <p align="center">
-  <img src="docs/images/doc-insights.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-keypoints.png" width="720" alt="Document Keypoints">
 </p>
 
+<b>Document Classification</b>
+<p>Automatic classification of document type using AI and rule‑based heuristics. Supports dozens of enterprise document categories.</p>
 <p align="center">
-  <img src="docs/images/doc-keypoints.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-classification.png" width="720" alt="Document Classification">
 </p>
 
+<b>Similar Document Button</b>
+<p>A quick‑action button that triggers similarity search to find related documents using embeddings.</p>
 <p align="center">
-  <img src="docs/images/doc-classification.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-similar.png" width="720" alt="Similar doc button">
 </p>
 
+<b>Similar Documents</b>
+<p>A list of documents ranked by semantic similarity, enabling cross‑reference, comparison, and clustering.</p>
 <p align="center">
-  <img src="docs/images/doc-similar.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-similar2.png" width="720" alt="Similar docs">
 </p>
 
+<b>Ask AI Button</b>
+<p>Entry point to the conversational Q&A system powered by your structured analyzer output + embeddings.</p>
 <p align="center">
-  <img src="docs/images/doc-similar2.png" width="720" alt="All Documents>
+  <img src="docs/images/doc-askAI.png" width="720" alt="Ask AI Button">
 </p>
 
+<b>AI Conversation</b>
+<p>Interactive Q&A interface where users can ask natural‑language questions about the document and receive grounded, context‑aware answers.</p>
 <p align="center">
-  <img src="docs/images/doc-askAI.png" width="720" alt="All Documents>
+  <img src="docs/images/ai-conversation.png" width="720" alt="Ask Q&A">
 </p>
 
+<b>Error Analytics</b>
+<p>A diagnostic dashboard showing extraction issues, OCR errors, missing fields, and analyzer warnings — essential for enterprise QA.</p>
 <p align="center">
-  <img src="docs/images/ai-conversation.png" width="720" alt="All Documents>
-</p>
-
-<p align="center">
-  <img src="docs/images/ai-conversation.png" width="720" alt="All Documents>
+  <img src="docs/images/error-analytics.png" width="720" alt="Error Analytics">
 </p>
 
 ---
