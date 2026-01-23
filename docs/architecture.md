@@ -22,6 +22,8 @@ UniDocVerse consists of three major layers:
 - **Backend** — FastAPI + LangGraph multi‑agent engine  
 - **Database** — PostgreSQL + pgvector  
 
+## High‑Level System Architecture
+
 ```mermaid
 flowchart LR
 
@@ -44,8 +46,9 @@ flowchart LR
     Workflow --> Analytics
     Workflow --> PG
     API --> PG
+```
 
-
+Agentic Workflow Pipeline
 
 flowchart TD
 
@@ -60,16 +63,7 @@ flowchart TD
     METRICS --> ENTITY[Entity Linking Node]
     ENTITY --> FINALIZE[Finalize Node]
 
----
 
-## 🧩 Architecture Diagrams (Low Level)
-
-Below are placeholders for UniDocVerse architecture diagrams.  
-Replace each Mermaid block with your final diagrams when ready.
-
-### System Architecture (Placeholder)
-
-```mermaid
 flowchart TB
 
     %% ============================
@@ -150,4 +144,4 @@ flowchart TB
     ANALYTICS --> UI
     PG --> UI
     VEC --> UI
-
+    
