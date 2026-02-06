@@ -340,28 +340,3 @@ YAML (.yaml, .yml)
 </p>
 
 ---
-
-## 🏗️ System Architecture
-
-```mermaid
-flowchart LR
-
-    subgraph Client
-        UI[Angular Dashboard]
-    end
-
-    subgraph Backend
-        API[FastAPI Service]
-        Workflow[LangGraph Multi‑Agent Engine]
-        Analytics[Analytics Auto‑Generator]
-    end
-
-    subgraph Database
-        PG[(PostgreSQL + pgvector)]
-    end
-
-    UI -->|REST / API Calls| API
-    API --> Workflow
-    Workflow --> Analytics
-    Workflow --> PG
-    API --> PG
