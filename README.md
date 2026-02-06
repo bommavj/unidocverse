@@ -199,10 +199,6 @@ EML (.eml)
 MSG (.msg)  
 MBOX (.mbox)
 
-### 📦 Archives  
-ZIP (.zip)  
-TAR, GZ (.tar, .gz, .tgz)
-
 ### 🧠 Machine Formats  
 JSONL (.jsonl)  
 XML (.xml)  
