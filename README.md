@@ -1,9 +1,6 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo-final.png" width="160" alt="UniDocVerse Logo">
+  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo-final.png" width="300" alt="UniDocVerse Logo">
 </p>
-
-
-<h1 align="center">UniDocVerse</h1>
 
 <p align="center">
   <strong>Universal AI Document Intelligence for Law, Finance, Healthcare, Insurance, Government, Education, Real Estate, HR, Compliance, Manufacturing, and Enterprises Worldwide.</strong><br/>
