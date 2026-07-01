@@ -38,7 +38,7 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 # Compile and install pgvector extension inside Postgres
 RUN git clone --branch v0.7.4 https://github.com/pgvector/pgvector.git /tmp/pgvector \
     && cd /tmp/pgvector \
-    && make && make install \
+    && make OPTFLAGS="" && make install \
     && rm -rf /tmp/pgvector
 
 # Install Flyway CLI (architecture-independent, using system JRE)
