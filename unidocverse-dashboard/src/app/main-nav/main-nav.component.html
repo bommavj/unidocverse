@@ -39,7 +39,6 @@
         <span class="sb-badge" *ngIf="docCount > 0">{{ docCount }}</span>
       </a>
       <a class="sb-a" routerLink="/search"     routerLinkActive="on"><span class="sbi">🔍</span>{{ 'Search' | translate }}</a>
-      <a class="sb-a" routerLink="/analytics"  routerLinkActive="on"><span class="sbi">📈</span>{{ 'Analytics' | translate }}</a>
       <a class="sb-a" routerLink="/timeline"   routerLinkActive="on"><span class="sbi">🕒</span>{{ 'Timeline' | translate }}</a>
       <a class="sb-a" routerLink="/upload"     routerLinkActive="on"><span class="sbi">↑</span>{{ 'Upload' | translate }}</a>
       <a class="sb-a" routerLink="/insights"   routerLinkActive="on"><span class="sbi">⚡</span>{{ 'Insights' | translate }}</a>
@@ -50,6 +49,17 @@
       <a class="sb-a" routerLink="/settings" routerLinkActive="on" *ngIf="auth.isAdmin()">
         <span class="sbi">⚙️</span>{{ 'Settings' | translate }}
       </a>
+      <a class="sb-a" routerLink="/report-issue" routerLinkActive="on" title="Report Issue">
+        <span class="sbi">🐛</span>{{ 'Issue Tracker' | translate }}
+      </a>
+    </div>
+
+    <!-- Analytics & Insights -->
+    <div class="sb-sec">
+      <div class="sb-lbl">{{ 'Analytics & Insights' | translate }}</div>
+      <a class="sb-a" routerLink="/analytics-hub"         routerLinkActive="on"><span class="sbi">📊</span>{{ 'Analytics Hub' | translate }}</a>
+      <a class="sb-a" routerLink="/document-analytics"    routerLinkActive="on"><span class="sbi">📄</span>{{ 'Doc Analytics' | translate }}</a>
+      <a class="sb-a" routerLink="/history"               routerLinkActive="on"><span class="sbi">💬</span>{{ 'Conversation History' | translate }}</a>
     </div>
 
     <!-- Personal Assistant -->
@@ -57,6 +67,15 @@
       <div class="sb-lbl">{{ 'Assistant' | translate }}</div>
       <a class="sb-a" routerLink="/planner"   routerLinkActive="on"><span class="sbi">📅</span>{{ 'Daily Planner' | translate }}</a>
       <a class="sb-a" routerLink="/notes"     routerLinkActive="on"><span class="sbi">📝</span>{{ 'Quick Notes' | translate }}</a>
+    </div>
+
+    <!-- AI & Automation -->
+    <div class="sb-sec">
+      <div class="sb-lbl">{{ 'AI & Automation' | translate }}</div>
+      <a class="sb-a" routerLink="/automation-hub"        routerLinkActive="on"><span class="sbi">⚙️</span>{{ 'Automation' | translate }}</a>
+      <a class="sb-a" routerLink="/agent-builder"         routerLinkActive="on"><span class="sbi">🤖</span>{{ 'Agent Builder' | translate }}</a>
+      <a class="sb-a" routerLink="/workflow"              routerLinkActive="on"><span class="sbi">🔀</span>{{ 'Workflow' | translate }}</a>
+      <a class="sb-a" routerLink="/insurance-automation"  routerLinkActive="on"><span class="sbi">🛡️</span>{{ 'Insurance Auto' | translate }}</a>
     </div>
 
     <!-- Agency Management — shown only when feature flag enabled -->
@@ -70,6 +89,12 @@
       <a class="sb-a" routerLink="/loss-runs"   routerLinkActive="on"><span class="sbi">📉</span>{{ 'Loss Runs' | translate }}</a>
       <a class="sb-a" routerLink="/gap-analysis" routerLinkActive="on"><span class="sbi">🔎</span>{{ 'Gap Analysis' | translate }}</a>
       <a class="sb-a" routerLink="/coi"         routerLinkActive="on"><span class="sbi">📜</span>{{ 'COI' | translate }}</a>
+    </div>
+
+    <!-- Immigration -->
+    <div class="sb-sec">
+      <div class="sb-lbl">{{ 'Immigration' | translate }}</div>
+      <a class="sb-a" routerLink="/immigration" routerLinkActive="on"><span class="sbi">🛂</span>{{ 'Visa Tracker' | translate }}</a>
     </div>
 
     <!-- Legal & Compliance -->
@@ -121,6 +146,26 @@
       <a class="sb-a" routerLink="/supply-chain" [queryParams]="{ tab: 'sanctions' }" routerLinkActive="on"><span class="sbi">🚢</span>{{ 'Manifests' | translate }}</a>
     </div>
 
+    <!-- Compliance & Risk -->
+    <div class="sb-sec">
+      <div class="sb-lbl">{{ 'Compliance & Risk' | translate }}</div>
+      <a class="sb-a" routerLink="/compliance"    routerLinkActive="on"><span class="sbi">✅</span>{{ 'Compliance' | translate }}</a>
+      <a class="sb-a" routerLink="/risk"          routerLinkActive="on"><span class="sbi">⚠️</span>{{ 'Risk' | translate }}</a>
+      <a class="sb-a" routerLink="/audit"         routerLinkActive="on"><span class="sbi">🔍</span>{{ 'Audit' | translate }}</a>
+      <a class="sb-a" routerLink="/deadlines"     routerLinkActive="on"><span class="sbi">⏰</span>{{ 'Deadlines' | translate }}</a>
+    </div>
+
+    <!-- Operations -->
+    <div class="sb-sec">
+      <div class="sb-lbl">{{ 'Operations' | translate }}</div>
+      <a class="sb-a" routerLink="/matters"       routerLinkActive="on"><span class="sbi">📁</span>{{ 'Matters' | translate }}</a>
+      <a class="sb-a" routerLink="/claims"        routerLinkActive="on"><span class="sbi">🏥</span>{{ 'Claims' | translate }}</a>
+      <a class="sb-a" routerLink="/approvals"     routerLinkActive="on"><span class="sbi">✔️</span>{{ 'Approvals' | translate }}</a>
+      <a class="sb-a" routerLink="/quotes"        routerLinkActive="on"><span class="sbi">💬</span>{{ 'Quotes' | translate }}</a>
+      <a class="sb-a" routerLink="/clm"           routerLinkActive="on"><span class="sbi">📝</span>{{ 'CLM' | translate }}</a>
+      <a class="sb-a" routerLink="/jurisdiction"  routerLinkActive="on"><span class="sbi">🗺️</span>{{ 'Jurisdiction' | translate }}</a>
+    </div>
+
     <!-- Tools -->
     <div class="sb-sec">
       <div class="sb-lbl">{{ 'Tools' | translate }}</div>
@@ -133,6 +178,14 @@
       <a class="sb-a" routerLink="/integrations" routerLinkActive="on">
         <span class="sbi">🔌</span>{{ 'Integrations' | translate }}
       </a>
+
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="sb-sec">
+      <a class="sb-a sb-a--disclaimer" routerLink="/disclaimer" routerLinkActive="on">
+        <span class="sbi">⚠️</span>Disclaimer & Terms
+      </a>
     </div>
 
   </div><!-- end sb-scroll -->
@@ -141,7 +194,10 @@
   <div class="sb-lang-select" title="Change language">
     <span style="font-size:16px;">🌐</span>
     <select [ngModel]="languageService.currentLang()" (ngModelChange)="changeLanguage($event)">
-      <option *ngFor="let item of languageNames | keyvalue" [value]="item.key">{{ item.value }}</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
     </select>
   </div>
 
