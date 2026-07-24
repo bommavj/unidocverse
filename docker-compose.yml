@@ -1,7 +1,8 @@
 version: '3.8'
 
 services:
-  # 1. Database Layer (Postgres + pgvector extension)
+
+  # ── 1. Database ─────────────────────────────────────────────────────────────
   postgres:
     image: ankane/pgvector:latest
     container_name: unidocverse-postgres
@@ -12,19 +13,19 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "54321:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U unidocverse -d unidocverse_db"]
       interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
     restart: always
     deploy:
       resources:
         limits:
           memory: 2048M
 
-  # 2. Database Migrations (Flyway for schema seeding, e.g. admin credentials)
+  # ── 2. Database Migrations ───────────────────────────────────────────────────
   flyway:
     image: flyway/flyway:latest
     container_name: unidocverse-flyway
@@ -40,7 +41,7 @@ services:
       postgres:
         condition: service_healthy
 
-  # 3. Local AI Layer (Ollama host)
+  # ── 3. Ollama LLM Host ───────────────────────────────────────────────────────
   ollama:
     image: ollama/ollama:latest
     container_name: unidocverse-ollama
@@ -49,30 +50,32 @@ services:
     ports:
       - "11434:11434"
     healthcheck:
-      test: ["CMD", "ollama", "list"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      test: ["CMD-SHELL", "curl -sf http://localhost:11434/api/tags > /dev/null"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
     restart: always
     deploy:
       resources:
         limits:
           memory: 8192M
 
-  # 4. Model Downloader/Initializer (One-shot setup helper)
+  # ── 4. Model Initializer (pulls phi3:mini on first run) ─────────────────────
   ollama-init:
     image: curlimages/curl:latest
     container_name: unidocverse-ollama-init
     volumes:
-      - ./init_models.sh:/tmp/init_models.sh
+      - ./init_models.sh:/tmp/init_models.sh:ro
     entrypoint: ["/bin/sh", "/tmp/init_models.sh"]
     environment:
       - OLLAMA_HOST=http://ollama:11434
     depends_on:
       ollama:
         condition: service_healthy
+    restart: "no"
 
-  # 5. Backend Application Layer (Obfuscated/Compiled PyInstaller Binary)
+  # ── 5. Backend ────────────────────────────────────────────────────────────────
   backend:
     build:
       context: ./unidocverse-service
@@ -85,14 +88,13 @@ services:
       - DB_USER=unidocverse
       - DB_PASSWORD=unidocverse
       - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=phi3:mini
       - UPLOAD_DIR=/app/storage/uploads
       - PROCESSED_DIR=/app/storage/processed
     ports:
       - "8000:8000"
     volumes:
-      # Mount local embedding and OCR models so they run offline out of the box
       - ./unidocverse-service/models:/app/models
-      # Persist user storage (uploads + processed reports)
       - ./storage:/app/storage
     depends_on:
       postgres:
@@ -101,13 +103,15 @@ services:
         condition: service_completed_successfully
       ollama:
         condition: service_healthy
+      ollama-init:
+        condition: service_completed_successfully
     restart: always
     deploy:
       resources:
         limits:
           memory: 4096M
 
-  # 6. Frontend Dashboard Layer (Angular 17 served via Nginx proxy)
+  # ── 6. Frontend (Angular via Nginx) ─────────────────────────────────────────
   frontend:
     build:
       context: ./unidocverse-dashboard
