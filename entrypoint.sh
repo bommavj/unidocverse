@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+# Restrict multi-threaded ML libraries to 4 CPU threads to prevent host system lag/freezes
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
+export VECLIB_MAXIMUM_THREADS=4
+export NUMEXPR_NUM_THREADS=4
+
 # Change PostgreSQL port to 54321 inside the container
 sed -i "s/#port = 5432/port = 54321/g" /etc/postgresql/17/main/postgresql.conf
 sed -i "s/port = 5432/port = 54321/g" /etc/postgresql/17/main/postgresql.conf
@@ -26,6 +33,25 @@ flyway -url=jdbc:postgresql://localhost:54321/unidocverse_db -user=postgres -pas
 
 echo "🤖 Starting Ollama..."
 OLLAMA_MAX_LOADED_MODELS=1 OLLAMA_NUM_PARALLEL=1 ollama serve &
+OLLAMA_PID=$!
+
+# Wait for Ollama HTTP API to become ready (up to 60s)
+echo "⏳ Waiting for Ollama to become ready..."
+for i in $(seq 1 60); do
+  if curl -sf http://localhost:11434/api/tags > /dev/null 2>&1; then
+    echo "✅ Ollama is ready"
+    break
+  fi
+  sleep 1
+done
+
+# Pull phi3:mini if not already cached
+if ollama list 2>/dev/null | grep -q "phi3:mini"; then
+  echo "✅ phi3:mini already cached — skipping pull"
+else
+  echo "📥 Pulling phi3:mini (first run — this may take a few minutes)..."
+  ollama pull phi3:mini || echo "⚠️  phi3:mini pull failed — AI features may be limited until model is available"
+fi
 
 # Export database configurations for the backend application
 export DB_PORT=54321
