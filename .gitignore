@@ -1,2 +1,38 @@
 unidocverse-service/
 unidocverse-dashboard/
+
+# Secrets — never commit
+.env
+*.env
+*.pem
+*.key
+*private_key*
+*recovery-codes*
+*recovery_codes*
+
+# Binaries / build artifacts
+backend_binary/
+build/
+dist/
+dmg/
+*.zip
+*.app
+*.dmg
+*.exe
+
+# Media / large files
+*.mp4
+*.mov
+
+# Scratch / temp
+scratch_logs.txt
+tmp_pg/
+test_docs/
+helpers/
+vendor/
+
+# macOS
+.DS_Store
+
+# IDE
+.claude/
