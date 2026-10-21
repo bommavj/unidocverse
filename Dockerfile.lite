@@ -1,0 +1,79 @@
+# ==========================================
+# UniDocVerse — Lite image
+#
+# No language model inside the image: answers come from Ollama running on the host (fast — it
+# uses the host's GPU / Apple Metal) or from a cloud model added in Integrations. Everything else
+# is the same as the full image: Postgres + pgvector, search model, full reranker, OCR (PaddleOCR for
+# scans and photographed IDs, Tesseract as fallback).
+#
+#   docker run -d -p 7979:7979 --add-host=host.docker.internal:host-gateway \
+#     -v unidocverse_pgdata:/var/lib/postgresql/data -v unidocverse_storage:/app/storage \
+#     --name unidocverse --restart always bommavj/unidocverse:lite
+# ==========================================
+
+# STAGE 1: Angular frontend
+FROM node:20 AS frontend-builder
+WORKDIR /app
+COPY unidocverse-dashboard/package*.json ./
+RUN npm install --loglevel=error
+COPY unidocverse-dashboard/ .
+RUN npm run build -- --configuration=production --no-progress
+
+# STAGE 2: backend
+FROM python:3.11-slim
+WORKDIR /app
+
+ENV FLYWAY_VERSION=10.16.0 \
+    DB_PORT=54321 \
+    DB_USER=postgres \
+    DB_PASSWORD=postgres \
+    UDV_EDITION=lite \
+    OLLAMA_MODEL=mistral:7b \
+    OLLAMA_HOST=http://host.docker.internal:11434 \
+    OLLAMA_BASE_URL=http://host.docker.internal:11434 \
+    MODEL_PATH=/app/models/all-mpnet-base-v2 \
+    RERANKER_PATH=/app/models/bge-reranker-v2-m3
+
+RUN apt-get update && apt-get install -y \
+    postgresql \
+    postgresql-contrib \
+    postgresql-client \
+    postgresql-server-dev-all \
+    libpq-dev \
+    tesseract-ocr \
+    libgl1 \
+    libglib2.0-0 \
+    ghostscript \
+    curl \
+    git \
+    build-essential \
+    default-jre-headless \
+    && git clone --branch v0.7.4 https://github.com/pgvector/pgvector.git /tmp/pgvector \
+    && cd /tmp/pgvector && make OPTFLAGS="" && make install \
+    && cd /app && rm -rf /tmp/pgvector \
+    && curl -L https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$FLYWAY_VERSION/flyway-commandline-$FLYWAY_VERSION.tar.gz \
+       | tar xz -C /usr/local/ \
+    && ln -s /usr/local/flyway-$FLYWAY_VERSION/flyway /usr/local/bin/flyway \
+    && pip install --no-cache-dir torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir paddlepaddle==3.2.2 -f https://www.paddlepaddle.org.cn/whl/linux/cpu/openblas/html \
+    && apt-get purge -y --auto-remove git build-essential postgresql-server-dev-all \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python dependencies (PaddleOCR included — it reads scanned IDs and notices far better than Tesseract)
+COPY unidocverse-service/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Backend, migrations, and only the two models search needs (embeddings + reranker)
+COPY unidocverse-service/app/ ./app/
+COPY unidocverse-service/migrations/ ./migrations/
+COPY unidocverse-service/models/all-mpnet-base-v2/ ./models/all-mpnet-base-v2/
+COPY unidocverse-service/models/bge-reranker-v2-m3/ ./models/bge-reranker-v2-m3/
+RUN python -m compileall -b app && find app -name "*.py" -delete
+
+COPY --from=frontend-builder /app/dist/ /app/unidocverse-dashboard/dist/
+
+COPY entrypoint-lite.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 7979
+ENTRYPOINT ["/entrypoint.sh"]

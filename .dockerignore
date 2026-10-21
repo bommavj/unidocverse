@@ -1,0 +1,56 @@
+# Ignore git history
+.git
+.gitignore
+
+# Ignore build virtual environments
+**/venv
+**/venv_x86_64
+**/.venv
+**/.buildenv
+**/.env
+
+# Ignore node modules
+**/node_modules
+
+# Ignore Tauri/Electron installer build artifacts
+unidocverse-installer/src-tauri/target
+unidocverse-installer/release
+unidocverse-installer/backend-dist
+unidocverse-installer/backend-dist-arm64
+unidocverse-installer/backend-dist-docker
+unidocverse-installer/_paddle_build_macos
+unidocverse-installer/ollama-portable
+unidocverse-installer/tesseract-portable
+unidocverse-installer/DEBS
+unidocverse-installer/RPMS
+
+# Ignore local packaging / dist / media artifacts
+dist/
+packaging/
+build/*
+!build/ollama_models
+*.mp4
+*.mov
+*.zip
+*.log
+
+# Ignore IDE settings
+.idea
+.vscode
+.DS_Store
+
+# Never ship signing keys, issued licenses or personal data
+**/private_key.pem
+**/pem-keys
+**/*.udv.json
+**/.wwebjs_auth
+**/research_cases.yaml
+**/github-recovery-codes.txt
+
+# Local Python environments and build leftovers (large; never part of an image)
+**/venv-arm64
+**/venv-*
+.venv-surya
+unidocverse-installer/backend-dist-lite
+unidocverse-installer/backend-dist.*
+unidocverse-service/logs

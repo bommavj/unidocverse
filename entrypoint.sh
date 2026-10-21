@@ -29,7 +29,7 @@ runuser -l postgres -c "psql -p 54321 -d unidocverse_db -c \"CREATE EXTENSION IF
 
 # Run Flyway migrations
 echo "🛠 Running Flyway migrations..."
-flyway -url=jdbc:postgresql://localhost:54321/unidocverse_db -user=postgres -password=postgres -locations=filesystem:/app/migrations migrate || true
+flyway -url=jdbc:postgresql://localhost:54321/unidocverse_db -user=postgres -password=postgres -locations=filesystem:/app/migrations -mixed=true -postgresql.transactional.lock=false migrate || true
 
 echo "🤖 Starting Ollama..."
 OLLAMA_MAX_LOADED_MODELS=1 OLLAMA_NUM_PARALLEL=1 ollama serve &
@@ -59,5 +59,5 @@ export DB_USER=postgres
 export DB_PASSWORD=postgres
 
 echo "🚀 Starting UniDocVerse Backend and Frontend..."
-exec uvicorn app.main:app --host 0.0.0.0 --port 80
+exec uvicorn app.main:app --host 0.0.0.0 --port 7979
 

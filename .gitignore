@@ -36,3 +36,10 @@ vendor/
 
 # IDE
 .claude/
+overlay-assistant/.env
+
+# unistrike
+unistrike/.env
+unistrike/reports/
+unistrike/**/__pycache__/
+unistrike/**/*.pyc

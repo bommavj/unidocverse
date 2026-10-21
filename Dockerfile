@@ -6,7 +6,7 @@ WORKDIR /app
 COPY unidocverse-dashboard/package*.json ./
 RUN npm install --loglevel=error
 COPY unidocverse-dashboard/ .
-RUN npm run build -- --configuration=production
+RUN npm run build -- --configuration=production --no-progress
 
 # ==========================================
 # STAGE 2: Build Python Backend & Bundle Everything
@@ -30,6 +30,8 @@ RUN apt-get update && apt-get install -y \
     postgresql-server-dev-all \
     libpq-dev \
     tesseract-ocr \
+    libgl1 \
+    libglib2.0-0 \
     ghostscript \
     curl \
     git \
@@ -75,7 +77,7 @@ RUN OLLAMA_MAX_LOADED_MODELS=1 OLLAMA_NUM_PARALLEL=1 ollama serve &\
 # Copy backend source code and compile to bytecode
 COPY unidocverse-service/app/ ./app/
 COPY unidocverse-service/migrations/ ./migrations/
-RUN mkdir -p ./models
+COPY unidocverse-service/models/ ./models/
 RUN python -m compileall -b app && find app -name "*.py" -delete
 
 # Copy Angular frontend (FastAPI serves these as static files)
@@ -85,6 +87,6 @@ COPY --from=frontend-builder /app/dist/ /app/unidocverse-dashboard/dist/
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 80
+EXPOSE 7979
 
 ENTRYPOINT ["/entrypoint.sh"]
