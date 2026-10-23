@@ -25,6 +25,11 @@
   <img src="https://img.shields.io/badge/license-Apache--2.0-brightgreen" />
 </p>
 
+<p align="center">
+  <img src="docs/images/2026-research-agent.png" width="900" alt="Research agent answering a three-part question about California sales and use tax revenue from the CDTFA 2023-24 Annual Report, with the source cited">
+  <br/><sub>A three-part question answered from the 104-page CDTFA 2023-24 Annual Report — every figure cited to its source.</sub>
+</p>
+
 ---
 
 ## ✨ Features
@@ -131,11 +136,11 @@ Installed a model after uploading documents? Reprocess them (**Documents → �
 
 ## Screenshots
 
-All screenshots use the built-in demo organisation (fictional people and companies).
+All screenshots use the demo organisation: fictional people and companies, plus the public CDTFA 2023-24 Annual Report.
 
-**Research agent** — answers cite the file each figure came from
+**Integrations** — any local Ollama model or a cloud model with your own key, with a warning before data leaves your network
 
-<img src="docs/images/2026-research-agent.png" width="800" alt="Research agent answering a W-2 question with the source file cited">
+<img src="docs/images/2026-integrations-models.png" width="800" alt="Integrations page with local models and cloud model providers">
 
 **Documents** — every upload classified by type (W-2, 1099, K-1, 1040, W-9…)
 
