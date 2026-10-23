@@ -63,6 +63,17 @@ RUN apt-get update && apt-get install -y \
 COPY unidocverse-service/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Bundled web search: SearxNG in its own venv (its pins don't touch the app's), started by the
+# entrypoint on 127.0.0.1:8888. Off until an admin turns web search on in Integrations.
+ARG SEARX_REF=master
+RUN python -m venv /opt/searxng \
+    && curl -sL https://github.com/searxng/searxng/archive/refs/heads/${SEARX_REF}.tar.gz | tar -xz -C /tmp \
+    && printf 'VERSION_STRING = "1.0.0"\nVERSION_TAG = "1.0.0"\nDOCKER_TAG = "1.0.0"\nGIT_URL = "https://github.com/searxng/searxng"\nGIT_BRANCH = "master"\n' > /tmp/searxng-${SEARX_REF}/searx/version_frozen.py \
+    && /opt/searxng/bin/pip install --no-cache-dir -r /tmp/searxng-*/requirements.txt setuptools wheel \
+    && /opt/searxng/bin/pip install --no-cache-dir --no-build-isolation /tmp/searxng-* \
+    && rm -rf /tmp/searxng-*
+COPY unidocverse-installer/scripts/searxng-settings.yml /opt/searxng/settings.yml
+
 # Backend, migrations, and only the two models search needs (embeddings + reranker)
 COPY unidocverse-service/app/ ./app/
 COPY unidocverse-service/migrations/ ./migrations/

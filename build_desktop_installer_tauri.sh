@@ -23,6 +23,11 @@ print_error() { echo -e "${RED}✗ $1${NC}"; }
 # LITE=1 bash build_desktop_installer_tauri.sh → Lite DMG: no bundled answer model (phi3/Ollama),
 # no PaddleOCR, no Windows/Intel Postgres. Keeps the search model + full reranker.
 LITE="${LITE:-0}"
+# STARTER=1 → Starter DMG (<2 GB, for GitHub Releases): Lite, minus the reranker, which the app
+# downloads on first launch from the UniDocVerse server (checksum verified).
+STARTER="${STARTER:-0}"; [ "$STARTER" = "1" ] && LITE=1
+STARTER_RERANKER_URL="https://unidocverse-downloads.vijay-bomma.workers.dev/models/bge-reranker-v2-m3.tar.gz"
+STARTER_RERANKER_SHA256="21f670438aa64d261c693a0e31ed7a6073aa68d4867e3e258981e6b538deaf88"
 BACKEND_DIST="backend-dist"; [ "$LITE" = "1" ] && BACKEND_DIST="backend-dist-lite"
 export UDV_LITE="$LITE"
 print_info() { echo -e "${BLUE}ℹ $1${NC}"; }
@@ -115,7 +120,10 @@ if [ -d "$MODEL_SRC" ]; then
 fi
 # Reranker: picks the passages the answer model reads — bundled so search is accurate offline
 RERANK_SRC="$SERVICE_DIR/models/bge-reranker-v2-m3"
-if [ -f "$RERANK_SRC/model.safetensors" ]; then
+if [ "$STARTER" = "1" ]; then
+    printf '{"reranker_url": "%s", "reranker_sha256": "%s"}\n' "$STARTER_RERANKER_URL" "$STARTER_RERANKER_SHA256" > "$RESOURCES_DIR/starter.json"
+    print_info "Starter: reranker downloads on first launch"
+elif [ -f "$RERANK_SRC/model.safetensors" ]; then
     mkdir -p "$RESOURCES_DIR/models/bge-reranker-v2-m3"
     cp -R "$RERANK_SRC/." "$RESOURCES_DIR/models/bge-reranker-v2-m3/"
 else
@@ -153,6 +161,16 @@ if [ -d "$OLLAMA_SRC" ]; then
 fi
 print_success "Ollama and models staged ✓"
 
+# 5.4. Bundled web search (SearxNG on 127.0.0.1:8888, off until an admin enables it)
+print_step "Staging SearxNG..."
+SEARX_SRC="$INSTALLER_DIR/searxng-portable"
+if [ ! -x "$SEARX_SRC/python/bin/python3" ] || [ "${REBUILD_SEARXNG:-0}" = "1" ]; then
+    bash "$INSTALLER_DIR/scripts/build_searxng.sh" || print_error "SearxNG build failed"
+fi
+rm -rf "$RESOURCES_DIR/searxng"; mkdir -p "$RESOURCES_DIR/searxng"
+cp -R "$SEARX_SRC/." "$RESOURCES_DIR/searxng/"
+print_success "SearxNG staged ✓ ($(du -sh "$RESOURCES_DIR/searxng" | cut -f1))"
+
 # 5.5. Code Sign Resources (Crucial for macOS Notarization)
 if [ -f "${CODESIGN_FILE:-}" ] && [ -n "${DEVELOPER_ID_APPLICATION:-}" ]; then
     print_step "Signing embedded resources for macOS..."
@@ -170,7 +188,7 @@ if [ -f "${CODESIGN_FILE:-}" ] && [ -n "${DEVELOPER_ID_APPLICATION:-}" ]; then
 
     # Sign all Mach-O executables in resource folders
     print_info "Signing Mach-O executable binaries..."
-    for dir in "$RESOURCES_DIR/postgres-arm64" "$RESOURCES_DIR/postgres-x64" "$RESOURCES_DIR/backend" "$RESOURCES_DIR/tesseract/bin" "$RESOURCES_DIR/ollama-portable"; do
+    for dir in "$RESOURCES_DIR/postgres-arm64" "$RESOURCES_DIR/postgres-x64" "$RESOURCES_DIR/backend" "$RESOURCES_DIR/tesseract/bin" "$RESOURCES_DIR/ollama-portable" "$RESOURCES_DIR/searxng"; do
         if [ -d "$dir" ]; then
             while IFS= read -r -d '' f; do
                 if file "$f" 2>/dev/null | grep -qE "Mach-O"; then
@@ -278,6 +296,13 @@ if [ ! -f "$DMG_PATH" ]; then
 fi
 
 print_success "DMG created ✓  ($(du -sh "$DMG_PATH" | cut -f1))"
+if [ "$STARTER" = "1" ]; then
+    DMG_BYTES=$(stat -f%z "$DMG_PATH")
+    if [ "$DMG_BYTES" -ge 2000000000 ]; then
+        print_error "Starter DMG is $DMG_BYTES bytes — GitHub Releases allows under 2 GB per file"
+        exit 1
+    fi
+fi
 
 if [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_APP_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
     print_step "Submitting DMG for Apple notarization..."

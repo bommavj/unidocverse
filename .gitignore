@@ -43,3 +43,6 @@ unistrike/.env
 unistrike/reports/
 unistrike/**/__pycache__/
 unistrike/**/*.pyc
+
+# Built by unidocverse-installer/scripts/build_searxng.sh
+unidocverse-installer/searxng-portable/

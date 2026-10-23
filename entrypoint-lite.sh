@@ -37,5 +37,13 @@ export DB_PORT=54321
 export DB_USER=postgres
 export DB_PASSWORD=postgres
 
+# Bundled web search (SearxNG). SEARXNG_URL set to another server = use that one instead.
+if [ -z "${SEARXNG_URL:-}" ] && [ -x /opt/searxng/bin/python ]; then
+  echo "🌐 Starting web search (SearxNG on 127.0.0.1:8888)..."
+  SEARXNG_SETTINGS_PATH=/opt/searxng/settings.yml \
+  SEARXNG_SECRET="$(python -c 'import secrets; print(secrets.token_hex(32))')" \
+    /opt/searxng/bin/python -m searx.webapp > /var/log/searxng.log 2>&1 &
+fi
+
 echo "🚀 Starting UniDocVerse (Lite)..."
 exec uvicorn app.main:app --host 0.0.0.0 --port 7979

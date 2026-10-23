@@ -20,6 +20,7 @@ unidocverse-installer/backend-dist-arm64
 unidocverse-installer/backend-dist-docker
 unidocverse-installer/_paddle_build_macos
 unidocverse-installer/ollama-portable
+unidocverse-installer/searxng-portable
 unidocverse-installer/tesseract-portable
 unidocverse-installer/DEBS
 unidocverse-installer/RPMS

@@ -36,6 +36,34 @@ const BACKEND_BIN: &str = "unidocverse-backend";
 struct AppState {
     pg_child: std::sync::Mutex<Option<Child>>,
     backend_child: std::sync::Mutex<Option<Child>>,
+    searx_child: std::sync::Mutex<Option<Child>>,
+}
+
+/// Bundled SearxNG (web search for the Research Agent) on 127.0.0.1:8888. Skipped when the
+/// port is already taken (the organisation runs its own) or the bundle has no SearxNG.
+/// Web search itself stays off until an admin turns it on in Integrations.
+fn start_searxng(resource_dir: &Path, logs_dir: &Path) -> Option<Child> {
+    let root = resource_dir.join("searxng");
+    let python = root.join("python").join("bin").join("python3");
+    if !python.exists() || TcpStream::connect("127.0.0.1:8888").is_ok() {
+        return None;
+    }
+    let seed = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_nanos()).unwrap_or(0) ^ ((std::process::id() as u128) << 64);
+    let log = fs::File::create(logs_dir.join("searxng.log")).ok()?;
+    let err = log.try_clone().ok()?;
+    let child = Command::new(&python)
+        .args(["-m", "searx.webapp"])
+        .env("SEARXNG_SETTINGS_PATH", root.join("settings.yml"))
+        .env("SEARXNG_SECRET", format!("{:032x}", seed))
+        .env("PYTHONDONTWRITEBYTECODE", "1")
+        .stdout(std::process::Stdio::from(log))
+        .stderr(std::process::Stdio::from(err))
+        .spawn();
+    match child {
+        Ok(c) => { println!("🌐 SearxNG started on 127.0.0.1:8888"); Some(c) }
+        Err(e) => { eprintln!("SearxNG not started: {}", e); None }
+    }
 }
 
 // ── Claude Desktop MCP auto-config ───────────────────────────────────────────
@@ -608,6 +636,9 @@ fn init_and_start_services(app: &tauri::App) -> Result<(), String> {
     // 6. Start Ollama natively or portably
     ensure_ollama_started(&resource_dir);
     
+    // 6b. Bundled web search (SearxNG)
+    *state.searx_child.lock().unwrap() = start_searxng(&resource_dir, &logs_dir);
+
     // 7. Start FastAPI application backend
     println!("🚀 Starting application backend...");
     let backend_path = resource_dir.join("backend").join(BACKEND_BIN);
@@ -621,8 +652,20 @@ fn init_and_start_services(app: &tauri::App) -> Result<(), String> {
         .env("PORT", "7979")
         .env("MODEL_PATH", resource_dir.join("models").join("all-mpnet-base-v2").to_str().unwrap())
         .env("RERANKER_PATH", resource_dir.join("models").join("bge-reranker-v2-m3").to_str().unwrap())
+        .env("SEARXNG_URL", "http://localhost:8888")
         .env("OLLAMA_BASE_URL", "http://localhost:11434");
         
+    // Starter edition: the reranker isn't bundled; the backend downloads it on first launch
+    if let Ok(raw) = fs::read_to_string(resource_dir.join("starter.json")) {
+        if let Ok(v) = serde_json::from_str::<serde_json::Value>(&raw) {
+            if let (Some(url), Some(sha)) = (v["reranker_url"].as_str(), v["reranker_sha256"].as_str()) {
+                backend_cmd.env("RERANKER_DOWNLOAD_URL", url)
+                    .env("RERANKER_SHA256", sha)
+                    .env("RERANKER_DOWNLOAD_DIR", app_data_dir.join("models").to_str().unwrap());
+            }
+        }
+    }
+
     let tesseract_dir = resource_dir.join("tesseract");
     if tesseract_dir.exists() {
         backend_cmd.env("TESSERACT_BINARY", tesseract_dir.join("bin").join("tesseract").to_str().unwrap())
@@ -670,6 +713,7 @@ pub fn run() {
     .manage(AppState {
       pg_child: std::sync::Mutex::new(None),
       backend_child: std::sync::Mutex::new(None),
+      searx_child: std::sync::Mutex::new(None),
     })
     .invoke_handler(tauri::generate_handler![connect_mcp_client])
     .setup(|app| {
@@ -694,6 +738,10 @@ pub fn run() {
         let _ = child.kill();
       }
       
+      if let Some(mut child) = state.searx_child.lock().unwrap().take() {
+        let _ = child.kill();
+      }
+
       // Terminate backend server cleanly
       let backend_child = state.backend_child.lock().unwrap().take();
       if let Some(mut child) = backend_child {
