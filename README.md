@@ -1,339 +1,183 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo-final.png" width="300" alt="UniDocVerse Logo">
+  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/logo-final.png" width="280" alt="UniDocVerse logo">
+</p>
+
+<h1 align="center">UniDocVerse 📄</h1>
+
+<p align="center">
+  <strong>Private, on-premises document intelligence.</strong><br/>
+  Upload tax forms, IDs, notices, statements, contracts and reports — then ask questions and get answers
+  with the exact page and file they came from. Runs on your own computer or server; your documents stay with you.
 </p>
 
 <p align="center">
-  <strong>Universal AI Document Intelligence for Law, Finance, Healthcare, Insurance, Government, Education, Real Estate, HR, Compliance, Manufacturing, and Enterprises Worldwide.</strong><br/>
-  One platform for every document, every workflow, every industry — built with privacy, legality, and global trust at its core.
+  <a href="https://unidocverse.com">Website</a> ·
+  <a href="#installation">Install</a> ·
+  <a href="#troubleshooting">Troubleshooting</a> ·
+  <a href="https://hub.docker.com/r/bommavj/unidocverse">Docker Hub</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Docker-Ready-blue?logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/Python-3.11+-yellow?logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-amd64%20%7C%20arm64-2496ed?logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/macOS-Apple%20Silicon-black?logo=apple&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3.11-yellow?logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Angular-17-red?logo=angular&logoColor=white" />
-  <img src="https://img.shields.io/github/license/<your-username>/unidocverse?color=brightgreen" />
-  <img src="https://img.shields.io/github/stars/<your-username>/unidocverse?style=social" />
+  <img src="https://img.shields.io/badge/license-Apache--2.0-brightgreen" />
 </p>
-
----
-
-## 🔐 Privacy‑First Architecture (Phase 1 → Phase 2)
-
-### Phase 1 — 100% Local, Private, Offline‑Ready  
-UniDocVerse is engineered for industries where confidentiality, compliance, and legal integrity are mandatory.  
-Everything runs **locally**, ensuring:
-
-- No cloud calls  
-- No external APIs  
-- No data leaves your environment  
-- No telemetry, tracking, or analytics  
-- No licensing violations  
-- No compliance conflicts  
-- No internet required  
-- Fully self‑contained deployment  
-
-All AI processing — OCR, extraction, embeddings, analytics, classification, search — happens **inside your infrastructure**.
-
-Perfect for:
-
-- Law firms  
-- Banks  
-- Hospitals  
-- Insurance  
-- Government  
-- Compliance teams  
-- Regulated enterprises  
-
-**Your documents never leave your machine.  
-Your data stays yours. Always.**
-
----
-
-### Phase 2 — Secure Cloud Deployment (Optional)  
-Phase 2 introduces optional cloud scalability while preserving enterprise‑grade privacy.
-
-Planned capabilities:
-
-- Fully managed cloud deployment  
-- Multi‑tenant SaaS architecture  
-- Auto‑scaling pipelines  
-- Cloud vector search  
-- Global team access  
-- Encrypted storage & transport  
-- SOC2 / HIPAA‑ready design  
-- Hybrid mode (local + cloud)
-
-**Cloud is optional — never required.  
-Privacy remains the foundation.**
-
----
-
-## 🧠 Local AI Models Included — Legally Safe, Redistribution‑Friendly
-
-UniDocVerse ships with **all‑mpnet‑base‑v2**, a high‑quality sentence‑embedding model that is:
-
-- ✅ Redistribution‑permitted  
-- ✅ Commercial‑use allowed  
-- ✅ Fully local  
-- ✅ No external downloads required  
-- ✅ No internet needed  
-- ✅ No licensing conflicts  
-- ✅ No legal exposure  
-
-This ensures UniDocVerse remains:
-
-- Safe to distribute  
-- Safe to deploy  
-- Safe for enterprise environments  
-- Safe for regulated industries  
-- Safe for global usage  
-
-### Why all‑mpnet‑base‑v2?
-
-- Excellent semantic embedding performance  
-- Lightweight and fast  
-- Works offline  
-- Ideal for vector search, clustering, classification, and analytics  
-- Stable and widely trusted  
-
-### Thank You to the Model Authors  
-We extend our appreciation to the researchers and engineers who created **all‑mpnet‑base‑v2** and made it available under a license that supports:
-
-- Local deployment  
-- Redistribution  
-- Commercial usage  
-- Privacy‑first applications  
-
-Their work enables UniDocVerse to deliver **high‑quality AI capabilities without compromising privacy, legality, or user trust**.
-
----
-
-## 🔒 Why UniDocVerse Is Different
-
-### 1. Unlimited Files — No Quotas, No Limits  
-Process thousands or millions of documents.  
-No file count limits. No size caps. No usage quotas.  
-Your hardware is the only boundary.
-
-### 2. 100% Local Processing — Zero Cloud Dependency  
-No OpenAI. No Google. No AWS. No Azure.  
-No external APIs. No cloud sync. No telemetry.  
-Everything runs inside your infrastructure.
-
-### 3. Legally Clean, Compliance‑Safe, Enterprise‑Ready  
-No licensing violations.  
-No copyright conflicts.  
-No privacy breaches.  
-No regulatory offenses.  
-No cross‑border data transfer risks.
-
-### 4. Cloud Optional — Not Required  
-You choose:
-
-- Local  
-- On‑prem  
-- Hybrid  
-- Cloud (Phase 2)
-
-UniDocVerse never forces cloud usage.
-
----
-
-## 🚀 Overview
-
-UniDocVerse is a universal, cross‑industry AI platform for document understanding, analytics, semantic search, and workflow automation.  
-It transforms unstructured documents into structured insights using multi‑agent AI, vector search, and enterprise‑grade processing pipelines.
 
 ---
 
 ## ✨ Features
 
-| Category | Capabilities |
-|---------|--------------|
-| **AI Document Understanding** | OCR, text extraction, table parsing, metadata, entity detection |
-| **Semantic Intelligence** | Summaries, key points, insights, classifications, embeddings |
-| **Analytics Engine** | Auto‑generated dashboards, metrics, charts, visualizations |
-| **Search & Retrieval** | Vector search (pgvector), semantic ranking, keyword search |
-| **Workflow Automation** | Multi‑agent LangGraph pipelines, conditional routing |
-| **Universal Format Support** | PDF, DOCX, XLSX, PPTX, CSV, JSON, HTML, XML, TXT, JPG, PNG, HEIC, EML, MSG, ZIP, and more |
-| **Enterprise‑Grade Architecture** | FastAPI backend, Angular frontend, PostgreSQL + pgvector |
-| **Deployment Ready** | Docker Compose, on‑prem, cloud, hybrid |
+- **Ask your documents anything.** Questions are answered from your files, with a citation (file and page) for every fact.
+  If the documents don't contain the answer, it says so instead of guessing.
+- **Reads every page properly.** Each page is stored on its own with its real page number. Digital PDFs use the text layer;
+  scans and phone photos (including iPhone HEIC) are read with **PaddleOCR**, with noise from photos and barcodes filtered out.
+- **Forms box by box.** W-2, 1099, 1040, K-1, W-9, passports, USCIS notices, pay stubs, mortgage and property-tax bills are
+  read with a local vision model, and every value is checked against the page before it is stored.
+- **Charts and tables.** Values drawn in chart images are read and checked; questions that name "Table 1", "Chart 2" or
+  "page 47" go straight to that page.
+- **Accurate search.** Keyword + vector search (Postgres full-text and pgvector HNSW), a cross-encoder reranker
+  (`bge-reranker-v2-m3`), neighbouring passages, multi-part questions split into parts, and dates/years that pick the
+  right look-alike document ("my 2024 W-2", "the Jan 9 pay stub").
+- **Any model, per step.** Use any Ollama model, a cloud model with your own key (Anthropic, OpenAI, Gemini, xAI,
+  Mistral, DeepSeek, Groq, Together, OpenRouter, Perplexity) or any OpenAI-compatible server — and choose a different
+  model for planning, answering, extraction and vision (**Model roles**).
+- **Data protection for cloud models.** Asks before documents leave your machine, masks identifiers (SSNs, account
+  numbers, A-numbers…), never-send document types, monthly budget, and a log of every cloud call.
+- **Built for teams.** Organisations, roles, append-only audit trail with retention settings, approvals, duplicate
+  detection, a morning brief of what needs attention, and industry modules (insurance, immigration, legal, finance, HR…)
+  you can switch on or off.
+- **Connects to your systems.** Signed webhooks, QuickBooks (bills after approval), Salesforce, and MCP for AI assistants.
 
----
+## Installation
 
-## 📁 Supported File Types
+There are two ways to run UniDocVerse: **Docker** (recommended — Windows, Mac and Linux) or the **macOS app**.
 
-### 📄 Documents  
-PDF (.pdf)  
-DOC, DOCX (.doc, .docx)  
-ODT (.odt)  
-RTF (.rtf)  
-TXT (.txt)  
-HTML (.html, .htm)
+### Getting Started with Docker (Recommended)
 
-### 📊 Spreadsheets  
-XLS, XLSX (.xls, .xlsx)  
-CSV (.csv)  
-TSV (.tsv)  
-ODS (.ods)  
-Parquet (.parquet)  
-JSON (.json)
+UniDocVerse **Lite** has no language model inside the image: answers come from [Ollama](https://ollama.com) on your
+computer (fast — it uses your GPU / Apple Metal) or from a cloud model you add in **Integrations**. Search, reranking and
+scan reading are included.
 
-### 📑 Presentations  
-PPT, PPTX (.ppt, .pptx)  
-ODP (.odp)
+1. Install a Docker engine: Docker Desktop, or the free [Rancher Desktop](https://rancherdesktop.io) /
+   [Podman Desktop](https://podman-desktop.io) (free for any organisation, including government).
+2. Install [Ollama](https://ollama.com/download) and pull the models (see [Prerequisites](#prerequisites)):
 
-### 🖼️ Images (with OCR)  
-JPG, JPEG (.jpg, .jpeg)  
-PNG (.png)  
-WebP (.webp)  
-HEIC, HEIF (.heic, .heif)  
-TIFF (.tif, .tiff)  
-BMP (.bmp)
+   ```bash
+   ollama pull mistral:7b
+   ollama pull gemma4
+   ```
 
-### 📬 Emails  
-EML (.eml)  
-MSG (.msg)  
-MBOX (.mbox)
+3. Run UniDocVerse:
 
-### 🧠 Machine Formats  
-JSONL (.jsonl)  
-XML (.xml)  
-YAML (.yaml, .yml)
+   ```bash
+   docker run -d -p 7979:7979 --add-host=host.docker.internal:host-gateway \
+     --name unidocverse-app \
+     -v unidocverse_pgdata:/var/lib/postgresql/data \
+     -v unidocverse_storage:/app/storage \
+     --restart always bommavj/unidocverse:lite
+   ```
 
----
-## 🖥️ Product Screenshots
+4. Open **http://localhost:7979** and sign in.
 
-<b>Main Dashboard</b>
-<p>A unified overview of all uploaded documents, recent activity, analytics summaries, and quick‑access actions. Designed for fast navigation and enterprise clarity.</p>
+**Note:** the `-v` flags keep your database and uploaded files in Docker volumes, so they survive upgrades and restarts.
+The image works on Intel/AMD and Apple Silicon (`linux/amd64` and `linux/arm64`).
+
+### macOS app
+
+Download the notarized installer for Apple Silicon (M1 or later) from **[unidocverse.com](https://unidocverse.com)**.
+It includes everything — database, search models and a small built-in answer model — so it works offline after install.
+
+### Building from source
+
+```bash
+git clone https://github.com/bommavj/unidocverse.git
+cd unidocverse
+docker build -f Dockerfile.lite -t unidocverse:lite .
+```
+
+The backend (`unidocverse-service`, FastAPI + Postgres/pgvector) and the web app (`unidocverse-dashboard`, Angular) are
+separate repositories: [bommavj/unidocverse-service](https://github.com/bommavj/unidocverse-service) and
+[bommavj/unidocverse-dashboard](https://github.com/bommavj/unidocverse-dashboard).
+
+## Prerequisites
+
+| | Minimum | For the most accurate answers |
+|---|---|---|
+| **Memory** | 16 GB | 32 GB if you read forms and charts |
+| **Answer model** | `ollama pull mistral:7b`, or a cloud model in Integrations | A cloud model or a larger local model for long multi-part table questions |
+| **Forms & charts** | — | `ollama pull gemma4` (~10 GB). Without it, forms and charts are read as plain text and chart values may be unavailable — answers say so instead of guessing |
+| **Disk** | ~10 GB for the image | Plus room for your documents and models |
+
+Installed a model after uploading documents? Reprocess them (**Documents → 🔄**) so they're read again.
+
+## Supported file types
+
+**Documents:** PDF, DOC/DOCX, ODT, RTF, TXT, HTML ·
+**Spreadsheets:** XLS/XLSX, CSV, TSV, ODS, Parquet, JSON ·
+**Presentations:** PPT/PPTX, ODP ·
+**Images (OCR):** JPG, PNG, WebP, HEIC/HEIF, TIFF, BMP ·
+**Email:** EML, MSG, MBOX ·
+**Data:** JSONL, XML, YAML
+
+## Screenshots
+
 <p align="center">
-  <img src="docs/images/main-dashboard.png" width="720" alt="Dashboard">
+  <img src="docs/images/main-dashboard.png" width="720" alt="Dashboard"><br/>
+  <img src="docs/images/ai-conversation.png" width="720" alt="Research agent with citations">
 </p>
 
-<b>Upload Document</b>
-<p>The primary upload interface where users can drag‑and‑drop or browse files. Supports PDFs, images, scanned documents, and multi‑page uploads.</p>
-<p align="center">
-  <img src="docs/images/upload.png" width="720" alt="upload">
-</p>
+## Troubleshooting
 
-<b>Batch Upload</b>
-<p>Bulk ingestion workflow allowing users to upload multiple documents at once. Ideal for law firms, finance teams, and enterprise back‑office operations.</p>
-<p align="center">
-  <img src="docs/images/batch-upload.png" width="720" alt="batch upload">
-</p>
+#### Answers don't work / "Choose how UniDocVerse answers questions"
+Lite has no model inside. Install Ollama and run `ollama pull mistral:7b`, or add a cloud model in
+**Integrations → Cloud models**, then press **Check again** on the Home page.
 
-<b>Documents List</b>
-<p>A searchable, filterable list of all processed documents. Includes metadata, timestamps, document type classification, and quick actions.</p>
-<p align="center">
-  <img src="docs/images/doc-cards.png" width="720" alt="documents">
-</p>
+#### Ollama connection errors (Docker)
+- Make sure Ollama is running on the host: `curl http://localhost:11434/api/tags`.
+- On Linux, keep `--add-host=host.docker.internal:host-gateway` in the `docker run` command.
+- If Ollama listens only on 127.0.0.1 and the container still can't reach it, start it with `OLLAMA_HOST=0.0.0.0 ollama serve`.
 
-<b>Semantic Search Results (View 1)</b>
-<p>AI‑powered semantic search results showing documents ranked by meaning, not keywords. Enables natural‑language queries across all content.</p>
-<p align="center">
-  <img src="docs/images/semantic-search.png" width="720" alt="Semantic Search Results">
-</p>
+#### Local OpenAI-compatible servers (llama.cpp, LM Studio, vLLM)
+Add them in **Integrations → Cloud models → Custom** with the server's URL (for example `http://host.docker.internal:8080/v1`).
 
-<b>Semantic Search Results (View 2)</b>
-<p>An alternate semantic search layout highlighting deeper context matches, similarity scores, and document previews.</p>
-<p align="center">
-  <img src="docs/images/semantic-search2.png" width="720" alt="Semantic Search Results">
-</p>
+#### The machine slows down or freezes
+A vision model and an answer model loaded together can exceed 16 GB. Let Ollama keep one model at a time
+(`OLLAMA_MAX_LOADED_MODELS=1`) and avoid heavy jobs while uploading large reports.
 
-<b>Document Preview (View 1)</b>
-<p>Full document viewer with page navigation, zoom, and side‑panel metadata. Supports scanned PDFs, OCR text, and structured extraction.</p>
-<p align="center">
-  <img src="docs/images/doc-preview.png" width="720" alt="Document Preview">
-</p>
+#### "No space left on device" in Docker
+Docker's virtual disk is full. Remove unused images (`docker image prune`) or raise the disk limit in Docker Desktop →
+Settings → Resources.
 
-<b>Full document preview</b>
-<p>*only pdf viewer , other formats can able to download</p>
-<p align="center">
-  <img src="docs/images/doc-preview-2.png" width="720" alt="Document Preview">
-</p>
+#### A chart question says its values haven't been read
+Install the vision model (`ollama pull gemma4`) and reprocess that document.
 
-<b>Document Analytics</b>
-<p align="center">
-  <img src="docs/images/doc-analytics.png" width="720" alt="Document Analytics">
-</p>
+## Using the API
 
-<b>Document Analytics</b>
-<p>High‑level analytics dashboard showing metrics, trends, aggregations, and insights extracted from the document.</p>
-<p align="center">
-  <img src="docs/images/advance-analytics.png" width="720" alt="Document Analytics">
-</p>
+The backend is a REST API on port 7979 (OpenAPI docs at `http://localhost:7979/docs`). Create an API token in
+**Settings** and send it as `Authorization: Bearer <token>`. An MCP server lets assistants such as Claude Desktop search
+and read your documents with your permission (**Integrations → MCP Clients**).
 
-<b>Document Analytics</b>
-<p>High‑level analytics dashboard showing metrics, trends, aggregations, and insights extracted from the document.</p>
-<p align="center">
-  <img src="docs/images/advance-analytics-v1.png" width="720" alt="Document Analytics">
-</p>
+## Upcoming features
 
-<b>Document Analytics V2</b>
-<p>Try V2 if the analytics didnt work. Additional option to check the analytics. </p>
-<b>If both didnt work (i.e. Analytics are not present)</b>
-<p align="center">
-  <img src="docs/images/try-v2.png" width="720" alt="Advance Analytics V2">
-</p>
+- [ ] Native Windows installer
+- [ ] Review queue for low-confidence form values
+- [ ] Form templates with built-in math checks (W-2, 1099, 1040)
+- [ ] Answering table questions from structured rows
+- [ ] More integrations (Xero, HubSpot, Clio)
 
-<b>Document Details</b>
-<p>A structured breakdown of document metadata, extracted fields, classification, and processing history.</p>
-<p align="center">
-  <img src="docs/images/doc-details.png" width="720" alt="Document Details">
-</p>
+## Contribution
 
-<b>Document Summary</b>
-<p>AI‑generated summary capturing the key points, purpose, and essential information from the document.</p>
-<p align="center">
-  <img src="docs/images/doc-summary.png" width="720" alt="Document Summary">
-</p>
+Issues and pull requests are welcome. Please open an issue first for larger changes so we can agree on the approach,
+and don't include real personal documents in issues or test files.
 
-<b>Document Insights</b>
-<p>Actionable insights extracted by the analyzer — anomalies, flags, recommendations, and domain‑specific intelligence.</p>
-<p align="center">
-  <img src="docs/images/doc-insights.png" width="720" alt="Document Insights">
-</p>
+## Help and Support
 
-<b>Document Keypoints</b>
-<p>Bullet‑point extraction of the most important facts, values, and statements within the document.</p>
-<p align="center">
-  <img src="docs/images/doc-keypoints.png" width="720" alt="Document Keypoints">
-</p>
+- Website and docs: [unidocverse.com](https://unidocverse.com)
+- Bugs and feature requests: [GitHub Issues](https://github.com/bommavj/unidocverse/issues)
+- Inside the app: **Help** (top bar) and **Report issue**
 
-<b>Document Classification</b>
-<p>Automatic classification of document type using AI and rule‑based heuristics. Supports dozens of enterprise document categories.</p>
-<p align="center">
-  <img src="docs/images/doc-classification.png" width="720" alt="Document Classification">
-</p>
+## License
 
-<b>Similar Document Button</b>
-<p>A quick‑action button that triggers similarity search to find related documents using embeddings.</p>
-<p align="center">
-  <img src="docs/images/doc-similar.png" width="720" alt="Similar doc button">
-</p>
-
-<b>Similar Documents</b>
-<p>A list of documents ranked by semantic similarity, enabling cross‑reference, comparison, and clustering.</p>
-<p align="center">
-  <img src="docs/images/doc-similar2.png" width="720" alt="Similar docs">
-</p>
-
-<b>Ask AI Button</b>
-<p>Entry point to the conversational Q&A system powered by your structured analyzer output + embeddings.</p>
-<p align="center">
-  <img src="docs/images/doc-askAI.png" width="720" alt="Ask AI Button">
-</p>
-
-<b>AI Conversation</b>
-<p>Interactive Q&A interface where users can ask natural‑language questions about the document and receive grounded, context‑aware answers.</p>
-<p align="center">
-  <img src="docs/images/ai-conversation.png" width="720" alt="Ask Q&A">
-</p>
-
-<b>Error Analytics</b>
-<p>A diagnostic dashboard showing extraction issues, OCR errors, missing fields, and analyzer warnings — essential for enterprise QA.</p>
-<p align="center">
-  <img src="docs/images/error-analytics.png" width="720" alt="Error Analytics">
-</p>
-
----
+UniDocVerse is licensed under the [Apache License 2.0](LICENSE).
