@@ -48,6 +48,9 @@
 - **Built for teams.** Organisations, roles, append-only audit trail with retention settings, approvals, duplicate
   detection, a morning brief of what needs attention, and industry modules (insurance, immigration, legal, finance, HR…)
   you can switch on or off.
+- **Web search, privately.** A built-in [SearxNG](https://docs.searxng.org) lets Research also search the web. Only the
+  question's general topic is sent (names, ID numbers, amounts and document text are removed), and every search is in
+  the audit trail. Off until an admin switches it on in **Integrations → Web search**.
 - **Connects to your systems.** Signed webhooks, QuickBooks (bills after approval), Salesforce, and MCP for AI assistants.
 
 ## Installation
@@ -88,6 +91,11 @@ The image works on Intel/AMD and Apple Silicon (`linux/amd64` and `linux/arm64`)
 
 Download the notarized installer for Apple Silicon (M1 or later) from **[unidocverse.com](https://unidocverse.com)**.
 It includes everything — database, search models and a small built-in answer model — so it works offline after install.
+
+### Starter (smallest download)
+
+A ~0.8 GB macOS build published on [GitHub Releases](https://github.com/bommavj/unidocverse/releases); it
+downloads its search model on first launch. See [docs/STARTER_EDITION.md](docs/STARTER_EDITION.md).
 
 ### Building from source
 
