@@ -131,10 +131,27 @@ Installed a model after uploading documents? Reprocess them (**Documents → �
 
 ## Screenshots
 
-<p align="center">
-  <img src="docs/images/main-dashboard.png" width="720" alt="Dashboard"><br/>
-  <img src="docs/images/ai-conversation.png" width="720" alt="Research agent with citations">
-</p>
+All screenshots use the built-in demo organisation (fictional people and companies).
+
+**Research agent** — answers cite the file each figure came from
+
+<img src="docs/images/2026-research-agent.png" width="800" alt="Research agent answering a W-2 question with the source file cited">
+
+**Documents** — every upload classified by type (W-2, 1099, K-1, 1040, W-9…)
+
+<img src="docs/images/2026-documents.png" width="800" alt="Document list with detected document types">
+
+**Integrations** — private web search (SearxNG), cloud model keys and a model per step
+
+<img src="docs/images/2026-integrations.png" width="800" alt="Web search and model roles settings">
+
+**Pilot report** — usage measured on your installation, for 30/60/90-day reviews
+
+<img src="docs/images/2026-pilot-report.png" width="800" alt="Pilot report with documents processed, questions answered and citation rate">
+
+**Help** — built into the app
+
+<img src="docs/images/2026-help.png" width="800" alt="In-app help">
 
 ## Troubleshooting
 
