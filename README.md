@@ -189,6 +189,10 @@ The backend is a REST API on port 7979 (OpenAPI docs at `http://localhost:7979/d
 **Settings** and send it as `Authorization: Bearer <token>`. An MCP server lets assistants such as Claude Desktop search
 and read your documents with your permission (**Integrations → MCP Clients**).
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for every release from v0.1.0 to today.
+
 ## Upcoming features
 
 - [ ] Native Windows installer
