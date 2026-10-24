@@ -75,6 +75,7 @@ RUN python -m venv /opt/searxng \
 COPY unidocverse-installer/scripts/searxng-settings.yml /opt/searxng/settings.yml
 
 # Backend, migrations, and only the two models search needs (embeddings + reranker)
+COPY LICENSE NOTICE ./
 COPY unidocverse-service/app/ ./app/
 COPY unidocverse-service/migrations/ ./migrations/
 COPY unidocverse-service/models/all-mpnet-base-v2/ ./models/all-mpnet-base-v2/
