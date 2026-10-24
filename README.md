@@ -214,4 +214,8 @@ and don't include real personal documents in issues or test files.
 
 ## License
 
-UniDocVerse is licensed under the [Apache License 2.0](LICENSE).
+UniDocVerse is licensed under the [Apache License 2.0](LICENSE). Copyright 2024–2026 Vijay Kumar Bomma.
+
+Redistributions and derivative works must keep the attribution in [NOTICE](NOTICE). "UniDocVerse" and the UniDocVerse logo are trademarks of Vijay Kumar Bomma and are not licensed for use by others.
+
+To cite this software, use the **Cite this repository** button or [CITATION.cff](CITATION.cff) (DOI [10.5281/zenodo.21880388](https://doi.org/10.5281/zenodo.21880388)).
