@@ -14,3 +14,18 @@
 **Caption under the GIF in the README:** *Ask in plain English; every figure is cited to the file it came from — runs entirely on your machine.*
 
 **Re-record:** `DEMO_TOKEN_FILE=… node docs/record_demo.js out/`, then build the GIF with ffmpeg (sped-up thinking segment labelled) (needs the app running on localhost:4200 / :7979 and a demo-organisation token).
+
+---
+
+# Analytics GIF — script
+
+**Goal:** show exact spreadsheet analytics and one-click charts. Demo organisation, synthetic `Product-Sales-Region.xlsx` (1,500 rows).
+
+| # | Time | Screen | What the viewer learns |
+|---|---|---|---|
+| 1 | 0–3 s | Research agent: *"Show total sales by region for 2024"* typed | Plain-English questions about spreadsheets |
+| 2 | 3–5 s | Computing (about 16 s, sped up 8× and labelled) | — |
+| 3 | 5–9 s | Answer table: South 382,472.17 · North 377,736.99 · East 361,402.37 · West 333,939.79 · Central 316,403.47, "computed over all 1,500 rows" | Exact figures, not estimates (checked against the file) |
+| 4 | 9–19 s | **Visualize** → Analytics: total 1,771,955, bar, ranked and donut charts, breakdown table | One click from answer to dashboard |
+
+**Re-record:** `DEMO_TOKEN_FILE=… node docs/record_analytics.js out/`, then build the GIF with ffmpeg.

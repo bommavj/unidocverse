@@ -30,6 +30,11 @@
   <br/><sub>Ask in plain English; every figure is cited to the file it came from — runs entirely on your machine. (The thinking step is sped up.)</sub>
 </p>
 
+<p align="center">
+  <img src="docs/images/analytics.gif" width="900" alt="Spreadsheet analytics: total sales by region for 2024 computed over 1,500 rows, then visualized as charts">
+  <br/><sub>Spreadsheets too: exact totals computed over every row, then one click to charts. (The computing step is sped up.)</sub>
+</p>
+
 ---
 
 ## ✨ Features
