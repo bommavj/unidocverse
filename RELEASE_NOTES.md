@@ -36,4 +36,8 @@ Every choice keeps your documents on your machine. You can switch later in **Int
 
 Verify the download: `shasum -a 256 unidocverse_0.1.7_arm64.dmg` and compare with the attached `.sha256`. Signed with a Developer ID and notarized by Apple.
 
+## Contributors
+
+* @bommavj — design, development and release
+
 **Full Changelog**: https://github.com/bommavj/unidocverse/compare/v0.1.6...v0.1.7 · [All versions since v0.1.0](https://github.com/bommavj/unidocverse/blob/main/CHANGELOG.md)
