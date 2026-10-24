@@ -21,7 +21,7 @@
 ## Downloads
 
 * **macOS Lite (Apple Silicon, ~1.3 GB):** `unidocverse_0.1.8_arm64.dmg` below — on first launch choose a built-in model, your own Ollama, or a cloud key. macOS 14+, M1 or later, 16 GB memory.
-* **macOS Full (offline, ~4.8 GB):** everything bundled, no downloads after install — from [unidocverse.com](https://unidocverse.com/#download).
+* **macOS Full (offline, ~4.8 GB):** everything bundled, no downloads after install — **[download Full v0.1.8](https://unidocverse-downloads.vijay-bomma.workers.dev/download/macos-full)** (also on [unidocverse.com](https://unidocverse.com/#download)).
 * **Docker (Windows, Mac, Linux):** `docker pull bommavj/unidocverse:v0.1.8-lite`.
 
 Verify the download: `shasum -a 256 unidocverse_0.1.8_arm64.dmg` and compare with the attached `.sha256`. Signed with a Developer ID and notarized by Apple.
