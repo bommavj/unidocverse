@@ -1,34 +1,34 @@
-## UniDocVerse 0.1.6
+## UniDocVerse 0.1.7
 
 Private, on-premises document intelligence: ask questions about tax forms, notices, statements and reports, and get answers with the exact file and page they came from.
 
-### Downloads
+### One installer for every Mac setup
 
-| Edition | File | Notes |
+`unidocverse_0.1.7_arm64.dmg` (1.3 GB, attached) replaces the separate Full, Lite and Starter downloads. On first launch, choose how UniDocVerse answers questions:
+
+| Choice | What downloads | Same as before |
 |---|---|---|
-| **Starter** (macOS, Apple Silicon) | `unidocverse_0.1.6_starter_arm64.dmg` (attached, ~1.1 GB) | Downloads its 1.3 GB search model on first launch (checksum verified, resumes if interrupted) |
-| Docker Lite (Windows / Mac / Linux) | `docker pull bommavj/unidocverse:v0.1.6-lite` | amd64 + arm64 |
-| Full / Lite (macOS) | [unidocverse.com](https://unidocverse.com) | Bundled answer model (Full) or full reranker in the installer (Lite) |
+| **Built-in model** | search model (1.3 GB) + answer model phi3:mini (2.1 GB) | Full |
+| **Your own Ollama** | search model only | Lite |
+| **Cloud model (your key)** | search model only | Lite with a cloud model |
 
-Requirements: macOS 14+ on M1 or later, 16 GB memory, [Ollama](https://ollama.com) with `ollama pull mistral:7b` (or a cloud model key). Optional for forms and charts: `ollama pull gemma4`.
+Models come from the UniDocVerse download server, are checked against a pinned SHA-256 and resume if interrupted. Scans and photos are read with PaddleOCR in every setup.
 
-### New
+Requirements: macOS 14+ on Apple Silicon (M1 or later), 16 GB memory. Optional for forms and charts: `ollama pull gemma4`.
 
-- **Private web search** — the Research Agent can also search the web through a bundled SearxNG. Only the question's general topic is sent (names, ID numbers, amounts and document text are removed first), every search is in the audit trail, and it is off until an admin turns it on.
-- **Starter edition** — a small installer published here on GitHub Releases.
-- **Pilot report** — 30/60/90-day usage report for early adopters (documents processed, pages read, cited answers, time saved). Nothing is sent automatically.
-- **Chart reading and model roles** — chart values read by a local vision model and checked against the page; choose a model per step (planner, answer, extraction, vision).
-- **Page-accurate ingestion** — every page stored with its real page number; scans and phone photos (including HEIC) read with PaddleOCR.
+Docker (Windows / Mac / Linux): `docker pull bommavj/unidocverse:lite`.
 
-### Fixed
+### Also in this release
 
-- Data separation between organisations: document lists, research history, the morning brief and industry modules now return only the signed-in organisation's records.
-- The morning brief endpoint now requires sign-in.
+- Private web search through a bundled SearxNG — topic-only queries, every search in the audit trail, off until an admin enables it.
+- Pilot report for 30/60/90-day reviews (Governance → Pilot report).
+- Data separation between organisations across documents, research history, the morning brief and industry modules; upload and job routes require sign-in.
+- Report questions are no longer answered from an unrelated spreadsheet that happens to share a column name.
 
 ### Verify the download
 
 ```bash
-shasum -a 256 unidocverse_0.1.6_starter_arm64.dmg   # compare with the attached .sha256
+shasum -a 256 unidocverse_0.1.7_arm64.dmg   # compare with the attached .sha256
 ```
 
-The DMG is signed with a Developer ID and notarized by Apple.
+Signed with a Developer ID and notarized by Apple.
