@@ -35,6 +35,11 @@
   <br/><sub>Spreadsheets too: exact totals computed over every row, then one click to charts. (The computing step is sped up.)</sub>
 </p>
 
+<p align="center">
+  <img src="docs/images/insurance.gif" width="900" alt="Insurance: a client's general liability limits, expiry date and additional-insured status answered from the declarations page and certificate of insurance, with sources cited">
+  <br/><sub>Insurance agencies: limits, expiry and additional insureds from a client's policy and certificate — every answer cited. (Sample policies; the thinking step is sped up.)</sub>
+</p>
+
 ---
 
 ## ✨ Features
