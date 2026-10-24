@@ -97,15 +97,20 @@ scan reading are included.
 **Note:** the `-v` flags keep your database and uploaded files in Docker volumes, so they survive upgrades and restarts.
 The image works on Intel/AMD and Apple Silicon (`linux/amd64` and `linux/arm64`).
 
-### macOS app
+### macOS app (Apple Silicon, M1 or later)
 
-Download the notarized installer for Apple Silicon (M1 or later) from **[unidocverse.com](https://unidocverse.com)**.
-It includes everything — database, search models and a small built-in answer model — so it works offline after install.
+Two notarized editions — pick one:
 
-### Starter (smallest download)
+| Edition | Download | Size | Best for |
+|---|---|---|---|
+| **Full** | **[Download Full (v0.1.8)](https://unidocverse-downloads.vijay-bomma.workers.dev/download/macos-full)** | 4.8 GB | Offline or air-gapped Macs — everything is inside, no downloads after install |
+| **Lite** | **[Download Lite (v0.1.8)](https://github.com/bommavj/unidocverse/releases/download/v0.1.8/unidocverse_0.1.8_arm64.dmg)** · [release notes](https://github.com/bommavj/unidocverse/releases/latest) | 1.3 GB | Most users — on first launch choose a built-in model, your own Ollama, or a cloud key |
 
-A ~0.8 GB macOS build published on [GitHub Releases](https://github.com/bommavj/unidocverse/releases); it
-downloads its search model on first launch. See [docs/STARTER_EDITION.md](docs/STARTER_EDITION.md).
+- **Full** includes the database, search models, scan reader and the built-in answer model **phi3:mini** (small and fast). For better answers,
+  install [Ollama](https://ollama.com/download), run `ollama pull mistral:7b`, and pick it in **Integrations → BYOM** — or add a cloud key.
+- **Lite** downloads its search model (1.3 GB) once on first launch, checked against a pinned SHA-256; the built-in model downloads only if you choose it.
+
+Both are also on [unidocverse.com](https://unidocverse.com/#download).
 
 ### Building from source
 
