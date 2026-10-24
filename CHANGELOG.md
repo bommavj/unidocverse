@@ -4,7 +4,23 @@ All notable changes to UniDocVerse, designed and built by [@bommavj](https://git
 
 ---
 
-## v0.1.7 — 2026-10-23 · Latest
+## v0.1.8 — 2026-10-24 · Latest
+
+### What's Changed
+
+* Statistics page: usage, answer quality and documents by type, with share options (summary, PDF, data, or Share with UniDocVerse).
+* Share your experience: opt-in feedback with a preview of exactly what is sent.
+* Spreadsheets: change-between-periods questions, title rows above headers, "excluding totals", and charts for grouped answers.
+* Fixed the cloud consent question appearing again after "Send to"; cloud-model notes now shown.
+* Research header shows the active cloud model; Refresh models in Integrations.
+
+[Release notes](https://github.com/bommavj/unidocverse/releases/tag/v0.1.8)
+
+**Contributor:** [@bommavj](https://github.com/bommavj)
+
+---
+
+## v0.1.7 — 2026-10-23
 
 ### What's Changed
 
