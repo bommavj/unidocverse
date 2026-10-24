@@ -26,8 +26,8 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/2026-research-agent.png" width="900" alt="Research agent answering a three-part question about California sales and use tax revenue from the CDTFA 2023-24 Annual Report, with the source cited">
-  <br/><sub>A three-part question answered from the 104-page CDTFA 2023-24 Annual Report — every figure cited to its source.</sub>
+  <img src="docs/images/demo.gif" width="900" alt="Demo: a three-part question about California sales and use tax revenue answered from the 104-page CDTFA 2023-24 Annual Report, with the source cited">
+  <br/><sub>Ask in plain English; every figure is cited to the file it came from — runs entirely on your machine. (The thinking step is sped up.)</sub>
 </p>
 
 ---
