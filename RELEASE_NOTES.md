@@ -31,7 +31,8 @@ Every choice keeps your documents on your machine. You can switch later in **Int
 
 ## Downloads
 
-* **macOS (Apple Silicon):** `unidocverse_0.1.7_arm64.dmg` below — macOS 14+, M1 or later, 16 GB memory.
+* **macOS Lite (Apple Silicon, 1.3 GB):** `unidocverse_0.1.7_arm64.dmg` below — macOS 14+, M1 or later, 16 GB memory.
+* **macOS Full (offline, 4.8 GB):** everything bundled — no downloads after install, for air-gapped or offline Macs. Download from [unidocverse.com](https://unidocverse.com/#download).
 * **Docker (Windows, Mac, Linux):** `docker pull bommavj/unidocverse:v0.1.7-lite` — see the [README](https://github.com/bommavj/unidocverse#getting-started-with-docker-recommended) for the full `docker run` command.
 
 Verify the download: `shasum -a 256 unidocverse_0.1.7_arm64.dmg` and compare with the attached `.sha256`. Signed with a Developer ID and notarized by Apple.
