@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to UniDocVerse. Downloads for each release are on the [Releases](https://github.com/bommavj/unidocverse/releases) page.
+All notable changes to UniDocVerse, designed and built by [@bommavj](https://github.com/bommavj) since v0.1.0. Downloads for each release are on the [Releases](https://github.com/bommavj/unidocverse/releases) page.
 
 ---
 
@@ -19,6 +19,8 @@ All notable changes to UniDocVerse. Downloads for each release are on the [Relea
 
 [Release notes](https://github.com/bommavj/unidocverse/releases/tag/v0.1.7)
 
+**Contributor:** [@bommavj](https://github.com/bommavj)
+
 ---
 
 ## v0.1.6 — 2026-10-23
@@ -33,6 +35,8 @@ All notable changes to UniDocVerse. Downloads for each release are on the [Relea
 * Docker Lite with SearxNG for amd64 and arm64.
 
 [Release notes](https://github.com/bommavj/unidocverse/releases/tag/v0.1.6)
+
+**Contributor:** [@bommavj](https://github.com/bommavj)
 
 ---
 
@@ -57,6 +61,8 @@ Every page is now stored with its real page number, read the best way for that p
 * In-app Help page.
 * First Docker Lite image (no model inside; uses Ollama on the host or a cloud key).
 
+**Contributor:** [@bommavj](https://github.com/bommavj)
+
 ---
 
 ## v0.1.4 — 2026-10-16
@@ -68,6 +74,8 @@ Every page is now stored with its real page number, read the best way for that p
 * Named documents and form codes ("the Acme W-2", "1099-NEC") find the right file.
 * Document types grouped into families so related forms are searched together.
 * Fixed the research stream running questions as the default organisation.
+
+**Contributor:** [@bommavj](https://github.com/bommavj)
 
 ---
 
@@ -82,6 +90,8 @@ Every page is now stored with its real page number, read the best way for that p
 * Dashboard redesign: top bar, menus that follow the switched-on modules.
 * Desktop app moved to port 7979; fresh installs run every database migration cleanly.
 
+**Contributor:** [@bommavj](https://github.com/bommavj)
+
 ---
 
 ## v0.1.2 — 2026-08-18
@@ -91,6 +101,8 @@ Every page is now stored with its real page number, read the best way for that p
 * Ten domain AI agents (insurance, immigration, legal, finance, HR, healthcare, real estate, supply chain, operations, compliance).
 * AI Reports: domain-scoped views, PDF download and pagination.
 * Documents can be filtered by client.
+
+**Contributor:** [@bommavj](https://github.com/bommavj)
 
 ---
 
@@ -103,6 +115,8 @@ Every page is now stored with its real page number, read the best way for that p
 * Every API request from the dashboard carries authentication; ask and research endpoints require sign-in.
 * Embeddable chatbot with session tokens.
 
+**Contributor:** [@bommavj](https://github.com/bommavj)
+
 ---
 
 ## v0.1.0 — 2026-02-12
@@ -111,3 +125,5 @@ Every page is now stored with its real page number, read the best way for that p
 
 * First macOS app for Apple Silicon: upload documents and ask questions, running entirely on the Mac.
 * Architecture, data-flow and deployment documentation.
+
+**Contributor:** [@bommavj](https://github.com/bommavj)
