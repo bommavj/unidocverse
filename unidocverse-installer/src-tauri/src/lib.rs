@@ -440,7 +440,7 @@ fn run_migrations(pg_bin_dir: &Path, migrations_dir: &Path) -> Result<(), String
 }
 
 // Helper: Check for system or portable Ollama and launch
-fn ensure_ollama_started(resource_dir: &Path) {
+fn ensure_ollama_started(resource_dir: &Path, data_models: &Path) {
     if TcpStream::connect("127.0.0.1:11434").is_ok() {
         println!("Ollama is already running.");
         return;
@@ -452,7 +452,12 @@ fn ensure_ollama_started(resource_dir: &Path) {
         println!("Starting portable Ollama from: {:?}", portable_ollama);
         let mut cmd = Command::new(&portable_ollama);
         cmd.arg("serve");
-        cmd.env("OLLAMA_MODELS", resource_dir.join("ollama-portable").join("models").to_str().unwrap());
+        // Models bundled in the app (older Full builds), else the app's data folder, where the
+        // built-in model is downloaded on demand (single installer)
+        let bundled = resource_dir.join("ollama-portable").join("models");
+        let models = if bundled.join("manifests").exists() { bundled } else { data_models.to_path_buf() };
+        let _ = fs::create_dir_all(&models);
+        cmd.env("OLLAMA_MODELS", models.to_str().unwrap());
         cmd.env("OLLAMA_HOST", "127.0.0.1:11434");
         cmd.env("OLLAMA_KEEP_ALIVE", "5m");
         cmd.env("OLLAMA_MAX_LOADED_MODELS", "1");
@@ -634,7 +639,7 @@ fn init_and_start_services(app: &tauri::App) -> Result<(), String> {
     }
     
     // 6. Start Ollama natively or portably
-    ensure_ollama_started(&resource_dir);
+    ensure_ollama_started(&resource_dir, &app_data_dir.join("ollama-models"));
     
     // 6b. Bundled web search (SearxNG)
     *state.searx_child.lock().unwrap() = start_searxng(&resource_dir, &logs_dir);
@@ -662,6 +667,13 @@ fn init_and_start_services(app: &tauri::App) -> Result<(), String> {
                 backend_cmd.env("RERANKER_DOWNLOAD_URL", url)
                     .env("RERANKER_SHA256", sha)
                     .env("RERANKER_DOWNLOAD_DIR", app_data_dir.join("models").to_str().unwrap());
+            }
+            // Built-in answer model: downloaded only when the user picks it on Home
+            if let (Some(url), Some(sha)) = (v["answer_url"].as_str(), v["answer_sha256"].as_str()) {
+                backend_cmd.env("ANSWER_MODEL_URL", url)
+                    .env("ANSWER_MODEL_SHA256", sha)
+                    .env("ANSWER_MODEL_DIR", app_data_dir.join("ollama-models").to_str().unwrap())
+                    .env("ANSWER_MODEL_NAME", v["answer_model"].as_str().unwrap_or("phi3:mini"));
             }
         }
     }

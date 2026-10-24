@@ -23,11 +23,16 @@ print_error() { echo -e "${RED}✗ $1${NC}"; }
 # LITE=1 bash build_desktop_installer_tauri.sh → Lite DMG: no bundled answer model (phi3/Ollama),
 # no PaddleOCR, no Windows/Intel Postgres. Keeps the search model + full reranker.
 LITE="${LITE:-0}"
-# STARTER=1 → Starter DMG (<2 GB, for GitHub Releases): Lite, minus the reranker, which the app
-# downloads on first launch from the UniDocVerse server (checksum verified).
-STARTER="${STARTER:-0}"; [ "$STARTER" = "1" ] && LITE=1
-STARTER_RERANKER_URL="https://unidocverse-downloads.vijay-bomma.workers.dev/models/bge-reranker-v2-m3.tar.gz"
+# STARTER=1 → the single macOS installer (<2 GB, for GitHub Releases): full backend (PaddleOCR
+# included) and the Ollama program, no bundled models. On first launch the app downloads the search
+# model; the built-in answer model downloads only if the user picks it. Checksums pinned below.
+STARTER="${STARTER:-0}"
+MODELS_URL="https://unidocverse-downloads.vijay-bomma.workers.dev/models"
+STARTER_RERANKER_URL="$MODELS_URL/bge-reranker-v2-m3.tar.gz"
 STARTER_RERANKER_SHA256="21f670438aa64d261c693a0e31ed7a6073aa68d4867e3e258981e6b538deaf88"
+STARTER_ANSWER_URL="$MODELS_URL/phi3-mini.tar.gz"
+STARTER_ANSWER_SHA256="86645ded58d4445e25b1a3ed9d54b65f16c849470380cf2d02d50e53a00dd78a"
+STARTER_ANSWER_MODEL="phi3:mini"
 BACKEND_DIST="backend-dist"; [ "$LITE" = "1" ] && BACKEND_DIST="backend-dist-lite"
 export UDV_LITE="$LITE"
 print_info() { echo -e "${BLUE}ℹ $1${NC}"; }
@@ -92,11 +97,11 @@ if [ -d "postgres-portable/mac-arm64" ]; then
     mkdir -p "$RESOURCES_DIR/postgres-arm64"
     cp -R postgres-portable/mac-arm64/. "$RESOURCES_DIR/postgres-arm64/"
 fi
-if [ "$LITE" != "1" ] && [ -d "postgres-portable/mac-x64" ]; then
+if [ "$LITE" != "1" ] && [ "$STARTER" != "1" ] && [ -d "postgres-portable/mac-x64" ]; then
     mkdir -p "$RESOURCES_DIR/postgres-x64"
     cp -R postgres-portable/mac-x64/. "$RESOURCES_DIR/postgres-x64/"
 fi
-if [ "$LITE" != "1" ] && [ -d "postgres-portable/win" ]; then
+if [ "$LITE" != "1" ] && [ "$STARTER" != "1" ] && [ -d "postgres-portable/win" ]; then
     mkdir -p "$RESOURCES_DIR/postgres-win"
     cp -R postgres-portable/win/. "$RESOURCES_DIR/postgres-win/"
 fi
@@ -121,7 +126,8 @@ fi
 # Reranker: picks the passages the answer model reads — bundled so search is accurate offline
 RERANK_SRC="$SERVICE_DIR/models/bge-reranker-v2-m3"
 if [ "$STARTER" = "1" ]; then
-    printf '{"reranker_url": "%s", "reranker_sha256": "%s"}\n' "$STARTER_RERANKER_URL" "$STARTER_RERANKER_SHA256" > "$RESOURCES_DIR/starter.json"
+    printf '{"reranker_url": "%s", "reranker_sha256": "%s", "answer_url": "%s", "answer_sha256": "%s", "answer_model": "%s"}\n' \
+        "$STARTER_RERANKER_URL" "$STARTER_RERANKER_SHA256" "$STARTER_ANSWER_URL" "$STARTER_ANSWER_SHA256" "$STARTER_ANSWER_MODEL" > "$RESOURCES_DIR/starter.json"
     print_info "Starter: reranker downloads on first launch"
 elif [ -f "$RERANK_SRC/model.safetensors" ]; then
     mkdir -p "$RESOURCES_DIR/models/bge-reranker-v2-m3"
@@ -154,7 +160,10 @@ print_success "Tesseract OCR staged ✓"
 # 5.3. Copy Ollama + Models (portable)
 print_step "Staging Ollama + models..."
 OLLAMA_SRC="$INSTALLER_DIR/ollama-portable"; [ "$LITE" = "1" ] && OLLAMA_SRC="/nonexistent-lite-build"   # Lite: no bundled model
-if [ -d "$OLLAMA_SRC" ]; then
+if [ "$STARTER" = "1" ]; then              # program only; the model downloads on demand
+    mkdir -p "$RESOURCES_DIR/ollama-portable"
+    cp "$INSTALLER_DIR/ollama-portable/ollama" "$RESOURCES_DIR/ollama-portable/ollama"
+elif [ -d "$OLLAMA_SRC" ]; then
     mkdir -p "$RESOURCES_DIR/ollama-portable"
     cp -R "$OLLAMA_SRC/." "$RESOURCES_DIR/ollama-portable/"
     chmod +x "$RESOURCES_DIR/ollama-portable/ollama" || true
@@ -288,7 +297,8 @@ export APPLE_TEAM_ID="${APPLE_TEAM_ID_SAVED}"
 print_success "Tauri build completed ✓"
 
 # 7. Notarize + Staple DMG
-DMG_PATH="$TAURI_DIR/target/universal-apple-darwin/release/bundle/dmg/unidocverse_0.1.0_universal.dmg"
+APP_VERSION=$(python3 -c "import json;print(json.load(open('$TAURI_DIR/tauri.conf.json'))['version'])")
+DMG_PATH="$TAURI_DIR/target/universal-apple-darwin/release/bundle/dmg/unidocverse_${APP_VERSION}_universal.dmg"
 
 if [ ! -f "$DMG_PATH" ]; then
     print_error "DMG not found at expected path: $DMG_PATH"
