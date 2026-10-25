@@ -1,5 +1,3 @@
-unidocverse-service/
-unidocverse-dashboard/
 
 # Secrets — never commit
 .env

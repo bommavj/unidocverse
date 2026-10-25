@@ -1,0 +1,9 @@
+[submodule "unidocverse-service"]
+	path = unidocverse-service
+	url = https://github.com/bommavj/unidocverse-service.git
+[submodule "unidocverse-dashboard"]
+	path = unidocverse-dashboard
+	url = https://github.com/bommavj/unidocverse-dashboard.git
+[submodule "unidocverse-website"]
+	path = unidocverse-website
+	url = https://github.com/bommavj/unidocverse-website.git

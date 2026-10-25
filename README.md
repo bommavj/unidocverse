@@ -127,12 +127,21 @@ Both are also on [unidocverse.com](https://unidocverse.com/#download).
 ```bash
 git clone https://github.com/bommavj/unidocverse.git
 cd unidocverse
+git submodule update --init unidocverse-service unidocverse-dashboard
 docker build -f Dockerfile.lite -t unidocverse:lite .
 ```
 
-The backend (`unidocverse-service`, FastAPI + Postgres/pgvector) and the web app (`unidocverse-dashboard`, Angular) are
-separate repositories: [bommavj/unidocverse-service](https://github.com/bommavj/unidocverse-service) and
-[bommavj/unidocverse-dashboard](https://github.com/bommavj/unidocverse-dashboard).
+### Repositories
+
+This repository links the two application repositories as Git submodules (folders that point to a specific commit
+of each):
+
+| Folder | Repository | What it is |
+|---|---|---|
+| [`unidocverse-service`](https://github.com/bommavj/unidocverse-service) | bommavj/unidocverse-service | Backend — FastAPI, Postgres/pgvector, OCR, search, research agent |
+| [`unidocverse-dashboard`](https://github.com/bommavj/unidocverse-dashboard) | bommavj/unidocverse-dashboard | Web app — Angular |
+
+This repository holds the installers, Docker images, docs and release notes.
 
 ## Prerequisites
 
