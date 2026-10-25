@@ -40,6 +40,11 @@
   <br/><sub>Insurance agencies: limits, expiry and additional insureds from a client's policy and certificate — every answer cited. (Sample policies; the thinking step is sped up.)</sub>
 </p>
 
+<p align="center">
+  <img src="docs/images/immigration.gif" width="900" alt="Immigration: H-1B status and passport expiry dates answered from an I-797A approval notice and a passport, with sources cited">
+  <br/><sub>Immigration teams: status and passport expiry from the I-797A and passport — each date cited to its document. (Sample case; the thinking step is sped up.)</sub>
+</p>
+
 ---
 
 ## ✨ Features
