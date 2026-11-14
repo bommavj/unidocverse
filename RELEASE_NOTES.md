@@ -1,33 +1,24 @@
 ## What's Changed
 
-* New **Statistics** page: documents processed, pages read, questions answered, answer quality and documents by type — for 7 days to 12 months, counts only.
-* New **Share your experience** (Help): rating, comment and optional usage counts, with a preview of exactly what is sent. Nothing is sent until you press Send.
-* Spreadsheets answer **change between periods** questions: "which sector had the largest % drop between March and April 2020" → General merchandise stores, −63.95%, computed over every row.
-* Spreadsheets with a title row above the real column headers are now read correctly.
-* "Excluding totals" now leaves the Total / ALL rows out instead of selecting them.
-* Spreadsheet answers grouped by a column carry a chart, so **Visualize** opens them in Analytics.
-* Fixed: after choosing **Send to** a cloud model, the same consent question could appear again. Your choice now applies to every step of the answer, and notes such as "Answered by Google Gemini" are shown.
-* The Research header shows the cloud model when one is active.
-* **Refresh models** in Integrations (and automatically when you return to the app) — models pulled with Ollama appear without reopening the page.
-
-## Answers you can share
-
-0.1.8 makes it easy to see — and show others — what UniDocVerse is doing for your organisation. **Statistics** summarises usage and answer quality for any period, and one click shares it: with your team as a summary, PDF or data file, or with us through **Share your experience**. Every share is opt-in and previewed first; the app still sends nothing on its own. See the [privacy note](https://unidocverse.com/company/privacy).
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/bommavj/unidocverse/main/docs/images/analytics.gif" width="860" alt="Spreadsheet analytics: total sales by region computed over 1,500 rows, then visualized as charts">
-</p>
+* **Immigration workspace for 33 case types**: H-1B, H-4, L-1/L-2, O-1, TN, E-3, F-1/OPT, J-1, EB-1/EB-2/EB-5, I-130, I-485, I-751, K-1, N-400 and more, each with its own questionnaire and evidence checklist.
+* **People & documents**: every person on your immigration documents, with how their passport, I-94, I-797, visa, LCA, PERM, I-140, EAD and green card connect, and the problems found between them (name or date mismatches, I-94 shorter than the approval, passport expiring first, missing documents for the case).
+* **Family links**: spouses from marriage certificates, children from birth certificates and the I-130 relationship box. A dependent's status (H-4, L-2, …) is checked against the principal's.
+* **New clients from documents**: an uploaded passport or USCIS form proposes a client; you approve before it is created.
+* Filled USCIS PDF forms are read from their form fields.
+* Green cards are classified correctly, with permanent residence shown as having no end date and card expiry as an I-90 renewal reminder.
+* Every correction you make to a fact, link or problem needs a reason and is kept in the change history.
+* Cleaner pages: shorter titles, no filler subtitles or emoji, and a restyled Immigration area (cases list, clients board, tracker, forms, e-signature, reports).
 
 ## Downloads
 
-* **macOS Lite (Apple Silicon, ~1.3 GB):** `unidocverse_0.1.8_arm64.dmg` below — on first launch choose a built-in model, your own Ollama, or a cloud key. macOS 14+, M1 or later, 16 GB memory.
-* **macOS Full (offline, ~4.8 GB):** everything bundled, no downloads after install — **[download Full v0.1.8](https://unidocverse-downloads.vijay-bomma.workers.dev/download/macos-full)** (also on [unidocverse.com](https://unidocverse.com/#download)).
-* **Docker (Windows, Mac, Linux):** `docker pull bommavj/unidocverse:v0.1.8-lite`.
+* **macOS Lite (Apple Silicon, ~1.3 GB):** `unidocverse_0.1.9_arm64.dmg` below. On first launch choose a built-in model, your own Ollama, or a cloud key. macOS 14+, M1 or later, 16 GB memory.
+* **macOS Full (offline, ~4.8 GB):** everything bundled, no downloads after install. **[Download Full v0.1.9](https://unidocverse-downloads.vijay-bomma.workers.dev/download/macos-full)** (also on [unidocverse.com](https://unidocverse.com/#download)).
+* **Docker (Windows, Mac, Linux):** `docker pull bommavj/unidocverse:v0.1.9-lite`.
 
-Verify the download: `shasum -a 256 unidocverse_0.1.8_arm64.dmg` and compare with the attached `.sha256`. Signed with a Developer ID and notarized by Apple.
+Verify the download: `shasum -a 256 unidocverse_0.1.9_arm64.dmg` and compare with the attached `.sha256`. Signed with a Developer ID and notarized by Apple.
 
 ## Contributors
 
 * @bommavj — design, development and release
 
-**Full Changelog**: https://github.com/bommavj/unidocverse/compare/v0.1.7...v0.1.8 · [All versions since v0.1.0](https://github.com/bommavj/unidocverse/blob/main/CHANGELOG.md)
+**Full Changelog**: https://github.com/bommavj/unidocverse/compare/v0.1.8...v0.1.9 · [All versions since v0.1.0](https://github.com/bommavj/unidocverse/blob/main/CHANGELOG.md)

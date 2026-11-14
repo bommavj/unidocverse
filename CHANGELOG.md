@@ -4,7 +4,24 @@ All notable changes to UniDocVerse, designed and built by [@bommavj](https://git
 
 ---
 
-## v0.1.8 — 2026-10-24 · Latest
+## v0.1.9 — 2026-11-14 · Latest
+
+### What's Changed
+
+* Immigration workspace for 33 case types, with questionnaires and evidence checklists.
+* People & documents: how each person's immigration documents connect, and the problems found between them.
+* Family links from marriage certificates, birth certificates and the I-130; dependents checked against the principal.
+* Documents propose new clients for your approval; filled USCIS PDF forms read from their fields.
+* Green card classification fixed; permanent residence has no end date.
+* Cleaner page headers and a restyled Immigration area.
+
+[Release notes](https://github.com/bommavj/unidocverse/releases/tag/v0.1.9)
+
+**Contributor:** [@bommavj](https://github.com/bommavj)
+
+---
+
+## v0.1.8 — 2026-10-24
 
 ### What's Changed
 
