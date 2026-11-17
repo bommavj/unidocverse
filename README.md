@@ -113,8 +113,8 @@ Two notarized editions — pick one:
 
 | Edition | Download | Size | Best for |
 |---|---|---|---|
-| **Full** | **[Download Full (v0.1.8)](https://unidocverse-downloads.vijay-bomma.workers.dev/download/macos-full)** | 4.8 GB | Offline or air-gapped Macs — everything is inside, no downloads after install |
-| **Lite** | **[Download Lite (v0.1.8)](https://github.com/bommavj/unidocverse/releases/download/v0.1.8/unidocverse_0.1.8_arm64.dmg)** · [release notes](https://github.com/bommavj/unidocverse/releases/latest) | 1.3 GB | Most users — on first launch choose a built-in model, your own Ollama, or a cloud key |
+| **Full** | **[Download Full (v0.1.9)](https://unidocverse-downloads.vijay-bomma.workers.dev/download/macos-full)** | 4.8 GB | Offline or air-gapped Macs — everything is inside, no downloads after install |
+| **Lite** | **[Download Lite (v0.1.9)](https://github.com/bommavj/unidocverse/releases/download/v0.1.9/unidocverse_0.1.9_arm64.dmg)** · [release notes](https://github.com/bommavj/unidocverse/releases/latest) | 1.3 GB | Most users — on first launch choose a built-in model, your own Ollama, or a cloud key |
 
 - **Full** includes the database, search models, scan reader and the built-in answer model **phi3:mini** (small and fast). For better answers,
   install [Ollama](https://ollama.com/download), run `ollama pull mistral:7b`, and pick it in **Integrations → BYOM** — or add a cloud key.
